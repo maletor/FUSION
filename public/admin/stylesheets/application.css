@@ -1,0 +1,11 @@
+/* Place your application-specific stylesheets for the admin panel here */
+
+
+.logo {
+  height: 44px;
+  width: 174px;
+  background: transparent url(/images/prod_logo.gif) no-repeat;
+  text-indent: -10000px;
+}
+
+

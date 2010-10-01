@@ -6,6 +6,7 @@ gem 'rails', '3.0.0'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql2'
+gem 'sqlite3-ruby'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -28,3 +29,5 @@ gem 'mysql2'
 # group :development, :test do
 #   gem 'webrat'
 # end
+gem 'nifty-generators'
+gem 'typus', :git => 'git://github.com/fesplugas/typus.git' # Until 1.0 becomes stable
