@@ -15,15 +15,13 @@
     
     <%= form_tag sessions_path do %>
       <p class="grid_3 prefix_3">
-        <%= text_field_tag :login, params[:login] %>
+        <%= text_field_tag :login, params[:login], :value => "Email" %>
       </p>
       <p class="grid_2">
-        <%= password_field_tag :password  %>
+        <%= password_field_tag :password, "password"  %>
       </p>
       <p id="submit" class="grid_1 suffix_3"><%= submit_tag "Log In", :class => "btn" %></p>
     <% end %>
-    <span class="grid_3 prefix_3"><%= label_tag :login, "Email" %></span>
-    <span class="grid_3 suffix_3"><%= label_tag :password %></span>
   </div>
 </div>
 <div id="footer">

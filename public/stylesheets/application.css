@@ -28,11 +28,6 @@ body {
   margin-top: 15px;
 }
 
-#submit {
-  text-align: right;
-}
-
-
 a.btn, input[type=text], input[type=password] {
     padding: 10px;
     border: none;
