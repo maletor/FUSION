@@ -23,6 +23,18 @@ body {
   border-top-left-radius: 10px 5px;
 }
 
+#forgot {
+  text-align: right;
+}
+
+#forgot a {
+  color: #737373;
+}
+
+#forgot a:hover, #forgot a:active {
+  color: #000;
+}
+
 #prod-footer {
   margin-right:30px;
   margin-top: 15px;
