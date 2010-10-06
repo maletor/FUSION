@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/fesplugas/typus.git
-  revision: 54bf14891d977104e6ed78f90cda513e7dcef312
+  revision: 8e5a74defbe04e203f290317214bd221b57b0583
   specs:
     typus (1.0.0.pre8)
 
