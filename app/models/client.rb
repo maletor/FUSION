@@ -1,3 +1,7 @@
-class Client < ActiveRecord::Base
-  attr_accessible :name
+class Client < User
+  attr_accessible :name, :website
+
+  has_many :projects
+
+  validates_presence_of :name
 end

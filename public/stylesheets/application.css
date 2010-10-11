@@ -23,8 +23,12 @@ body {
   border-top-left-radius: 10px 5px;
 }
 
-#forgot {
+#remember, #forgot {
   text-align: right;
+}
+
+#remember {
+  margin-top:20px;
 }
 
 #forgot a {

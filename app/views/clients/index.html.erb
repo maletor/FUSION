@@ -1,17 +1,27 @@
-<% title "Clients" %>
+<h1>Listing clients</h1>
 
 <table>
   <tr>
     <th>Name</th>
+    <th>Website</th>
+    <th>Phone</th>
+    <th>Company</th>
+    <th></th>
+    <th></th>
+    <th></th>
   </tr>
-  <% for client in @clients %>
-    <tr>
-      <td><%= client.name %></td>
-      <td><%= link_to "Show", client %></td>
-      <td><%= link_to "Edit", edit_client_path(client) %></td>
-      <td><%= link_to "Destroy", client, :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
-  <% end %>
+
+<% @clients.each do |client| %>
+  <tr>
+    <td><%= client.name %></td>
+    <td><%= client.website %></td>
+    <td><%= link_to 'Show', client %></td>
+    <td><%= link_to 'Edit', edit_client_path(client) %></td>
+    <td><%= link_to 'Destroy', client, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
 </table>
 
-<p><%= link_to "New Client", new_client_path %></p>
+<br />
+
+<%= link_to 'New Client', new_client_path %>

@@ -1,8 +1,9 @@
 GIT
-  remote: git://github.com/fesplugas/typus.git
-  revision: 8e5a74defbe04e203f290317214bd221b57b0583
+  remote: git://github.com/lailsonbm/vestal_versions
+  revision: 85e3bed2574ca790644b8dfc5d78b81e84be7b5e
   specs:
-    typus (1.0.0.pre8)
+    vestal_versions (1.2.0)
+      activerecord (>= 3.0.0)
 
 GEM
   remote: http://rubygems.org/
@@ -37,6 +38,7 @@ GEM
     arel (1.0.1)
       activesupport (~> 3.0.0)
     builder (2.1.2)
+    cancan (1.4.0)
     capistrano (2.5.19)
       highline
       net-scp (>= 1.0.0)
@@ -61,6 +63,9 @@ GEM
     net-ssh-gateway (1.0.1)
       net-ssh (>= 1.99.1)
     nifty-generators (0.4.1)
+    paperclip (2.3.3)
+      activerecord
+      activesupport
     polyglot (0.3.1)
     rack (1.2.1)
     rack-mount (0.6.13)
@@ -93,10 +98,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  cancan
   capistrano
   mysql2
   nifty-generators
+  paperclip
   rails (= 3.0.0)
   sqlite3-ruby
-  typus!
   unicorn
+  vestal_versions!

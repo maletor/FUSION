@@ -1,54 +1,49 @@
 require 'test_helper'
 
 class ClientsControllerTest < ActionController::TestCase
-  def test_index
+  setup do
+    @client = clients(:one)
+  end
+
+  test "should get index" do
     get :index
-    assert_template 'index'
+    assert_response :success
+    assert_not_nil assigns(:clients)
   end
-  
-  def test_show
-    get :show, :id => Client.first
-    assert_template 'show'
-  end
-  
-  def test_new
+
+  test "should get new" do
     get :new
-    assert_template 'new'
-  end
-  
-  def test_create_invalid
-    Client.any_instance.stubs(:valid?).returns(false)
-    post :create
-    assert_template 'new'
+    assert_response :success
   end
 
-  def test_create_valid
-    Client.any_instance.stubs(:valid?).returns(true)
-    post :create
-    assert_redirected_to client_url(assigns(:client))
-  end
-  
-  def test_edit
-    get :edit, :id => Client.first
-    assert_template 'edit'
-  end
-  
-  def test_update_invalid
-    Client.any_instance.stubs(:valid?).returns(false)
-    put :update, :id => Client.first
-    assert_template 'edit'
+  test "should create client" do
+    assert_difference('Client.count') do
+      post :create, :client => @client.attributes
+    end
+
+    assert_redirected_to client_path(assigns(:client))
   end
 
-  def test_update_valid
-    Client.any_instance.stubs(:valid?).returns(true)
-    put :update, :id => Client.first
-    assert_redirected_to client_url(assigns(:client))
+  test "should show client" do
+    get :show, :id => @client.to_param
+    assert_response :success
   end
-  
-  def test_destroy
-    client = Client.first
-    delete :destroy, :id => client
-    assert_redirected_to clients_url
-    assert !Client.exists?(client.id)
+
+  test "should get edit" do
+    get :edit, :id => @client.to_param
+    assert_response :success
+  end
+
+  test "should update client" do
+    put :update, :id => @client.to_param, :client => @client.attributes
+    assert_redirected_to client_path(assigns(:client))
+  end
+
+  test "should destroy client" do
+    assert_difference('Client.count', -1) do
+      delete :destroy, :id => @client.to_param
+    end
+
+    assert_redirected_to clients_path
   end
 end

@@ -1,24 +1,33 @@
-<% title "Sign up" %>
-
 <p>Already have an account? <%= link_to "Log in", login_path %>.</p>
 
-<%= form_for @user do |f| %>
-  <%= f.error_messages %>
+<%= form_for @user do |user_form| %>
+   <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
   <p>
-    <%= f.label :username %><br />
-    <%= f.text_field :username %>
+    <%= user_form.label :username %><br />
+    <%= user_form.text_field :username %>
   </p>
   <p>
-    <%= f.label :email, "Email Address" %><br />
-    <%= f.text_field :email %>
+    <%= user_form.label :email, "Email Address" %><br />
+    <%= user_form.text_field :email %>
   </p>
   <p>
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
+    <%= user_form.label :password %><br />
+    <%= user_form.password_field :password %>
   </p>
   <p>
-    <%= f.label :password_confirmation, "Confirm Password" %><br />
-    <%= f.password_field :password_confirmation %>
+    <%= user_form.label :password_confirmation, "Confirm Password" %><br />
+    <%= user_form.password_field :password_confirmation %>
   </p>
-  <p><%= f.submit "Sign up" %></p>
+  <p><%= user_form.submit "Sign up" %></p>
 <% end %>

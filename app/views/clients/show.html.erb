@@ -1,12 +1,18 @@
-<% title "Client" %>
+<p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <b>Name:</b>
   <%= @client.name %>
 </p>
 
 <p>
-  <%= link_to "Edit", edit_client_path(@client) %> |
-  <%= link_to "Destroy", @client, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", clients_path %>
+  <b>Website:</b>
+  <%= @client.website %>
 </p>
+
+
+
+<%= render :partial => 'projects/form' %>
+
+<%= link_to 'Edit', edit_client_path(@client) %> |
+<%= link_to 'Back', clients_path %>

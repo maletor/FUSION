@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Deadline:</b>
+  <%= @project.deadline %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @project.name %>
+</p>
+
+<p>
+  <b>Progress:</b>
+  <%= @project.progress %>
+</p>
+
+
+<%= link_to 'Edit', edit_client_project_path(@project) %> |
+<%= link_to 'Back', client_projects_path %>

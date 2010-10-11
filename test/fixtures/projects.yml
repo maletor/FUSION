@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  client: 
+  deadline: 2010-10-06 15:34:40
+  name: MyString
+  progress: 1
+
+two:
+  client: 
+  deadline: 2010-10-06 15:34:40
+  name: MyString
+  progress: 1

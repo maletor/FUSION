@@ -30,4 +30,6 @@ gem 'capistrano'
 #   gem 'webrat'
 # end
 gem 'nifty-generators'
-gem 'typus', :git => 'git://github.com/fesplugas/typus.git' # Until 1.0 becomes stable
+gem 'vestal_versions', :git => 'git://github.com/lailsonbm/vestal_versions' # No Rails 3 support from GitHub user laserlemon
+gem 'paperclip'
+gem 'cancan'
