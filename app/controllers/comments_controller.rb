@@ -13,6 +13,7 @@ class CommentsController < ApplicationController
   # GET /comments/1
   # GET /comments/1.xml
   def show
+    @task = Task.find(params[:task_id])
     @comment = Comment.find(params[:id])
 
     respond_to do |format|
@@ -34,6 +35,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/1/edit
   def edit
+    @task = Task.find(params[:task_id])
     @comment = Comment.find(params[:id])
   end
 
@@ -41,7 +43,7 @@ class CommentsController < ApplicationController
   # POST /comments.xml
   def create
     @task = Task.find(params[:task_id])
-    @comment = @task.comments.create(params[:comment])
+    @comment = @task.comments.create(params[:comment].merge(:user_id => current_user.id))
     redirect_to task_path(@task)
   end
 
@@ -51,8 +53,9 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
 
     respond_to do |format|
-      if @comment.update_attributes(params[:comment])
-        format.html { redirect_to(@comment, :notice => 'Comment was successfully updated.') }
+      if @comment.update_attributes(params[:comment].merge(:user_id => current_user.id, :updated_by => current_user))
+
+        format.html { redirect_to(task_path(params[:task_id]), :notice => 'Comment was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

@@ -19,6 +19,8 @@ class TasksController < ApplicationController
     @comment = @task.comments.build
     @comments = @task.comments
 
+    @comment.images.build
+
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @task }

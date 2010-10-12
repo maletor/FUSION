@@ -1,4 +1,5 @@
 class ClientsController < ApplicationController
+
   # GET /clients
   # GET /clients.xml
   def index
@@ -14,7 +15,7 @@ class ClientsController < ApplicationController
   # GET /clients/1.xml
   def show
     @client = Client.find(params[:id])
-    @project = @client.projects.build
+    @project = current_user.projects.build
 
     respond_to do |format|
       format.html # show.html.erb

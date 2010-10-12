@@ -1,4 +1,4 @@
-<%= form_for(@milestone) do |f| %>
+<%= form_for([@project, @milestone]) do |f| %>
   <% if @milestone.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@milestone.errors.count, "error") %> prohibited this milestone from being saved:</h2>

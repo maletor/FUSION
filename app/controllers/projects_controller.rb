@@ -14,6 +14,8 @@ class ProjectsController < ApplicationController
   # GET /projects/1.xml
   def show
     @project = Project.find(params[:id])
+    @milestone = @project.milestones.build
+    @invitation = @project.invitations.build
 
     respond_to do |format|
       format.html # show.html.erb

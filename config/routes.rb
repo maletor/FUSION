@@ -1,4 +1,7 @@
 Fusion::Application.routes.draw do
+
+  resources :cards
+
   resources :employees
 
   resources :clients do
@@ -6,6 +9,7 @@ Fusion::Application.routes.draw do
   end
   
   resources :projects do
+    resources :invitations
     resources :milestones
   end
 

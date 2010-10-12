@@ -7,4 +7,8 @@ class UserMailer < ActionMailer::Base
     mail(:to => user.email, :subject => "Welcome to PRODfusion")
   end
   
+  def project_invite(project, email)
+    @project = project
+    mail(:to => email, :subject => "PRODfusion: #{project.name}")
+  end
 end

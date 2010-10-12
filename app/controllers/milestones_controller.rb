@@ -40,17 +40,9 @@ class MilestonesController < ApplicationController
   # POST /milestones
   # POST /milestones.xml
   def create
-    @milestone = Milestone.new(params[:milestone])
-
-    respond_to do |format|
-      if @milestone.save
-        format.html { redirect_to(@milestone, :notice => 'Milestone was successfully created.') }
-        format.xml  { render :xml => @milestone, :status => :created, :location => @milestone }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @milestone.errors, :status => :unprocessable_entity }
-      end
-    end
+    @project = Project.find(params[:project_id])
+    @milestone = @project.milestones.create(params[:milestone])
+    redirect_to project_milestone_path(@milestone)
   end
 
   # PUT /milestones/1

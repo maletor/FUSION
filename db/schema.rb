@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101011012514) do
+ActiveRecord::Schema.define(:version => 20101012053213) do
 
   create_table "assets", :force => true do |t|
     t.integer  "task_id"
@@ -20,6 +20,21 @@ ActiveRecord::Schema.define(:version => 20101011012514) do
     t.string   "attachment_content_type"
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
+    t.string   "type"
+    t.integer  "assetable_id"
+    t.string   "assetable_type"
+  end
+
+  create_table "cards", :force => true do |t|
+    t.integer  "user_id"
+    t.boolean  "public",     :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "comment_images", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "comments", :force => true do |t|
@@ -28,12 +43,28 @@ ActiveRecord::Schema.define(:version => 20101011012514) do
     t.text     "message"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  create_table "invitations", :force => true do |t|
+    t.integer  "project_id"
+    t.string   "recipient_email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "milestones", :force => true do |t|
     t.integer  "project_id"
     t.string   "name"
     t.datetime "deadline"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "phone_numbers", :force => true do |t|
+    t.integer  "card_id"
+    t.string   "number"
+    t.integer  "type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -51,6 +82,11 @@ ActiveRecord::Schema.define(:version => 20101011012514) do
     t.integer  "milestone_id"
     t.string   "name"
     t.boolean  "complete"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_avatars", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -88,5 +124,13 @@ ActiveRecord::Schema.define(:version => 20101011012514) do
   add_index "versions", ["user_id", "user_type"], :name => "index_versions_on_user_id_and_user_type"
   add_index "versions", ["user_name"], :name => "index_versions_on_user_name"
   add_index "versions", ["versioned_id", "versioned_type"], :name => "index_versions_on_versioned_id_and_versioned_type"
+
+  create_table "websites", :force => true do |t|
+    t.integer  "card_id"
+    t.string   "url"
+    t.integer  "type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

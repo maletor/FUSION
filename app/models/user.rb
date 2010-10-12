@@ -1,4 +1,11 @@
 class User < ActiveRecord::Base
+  has_one :card
+  has_one :avatar
+  has_many :comments
+  accepts_nested_attributes_for :card
+  accepts_nested_attributes_for :avatar
+
+  ## Niftily-generated authentication code below.
   # new columns need to be added here to be writable through mass assignment
   attr_accessible  :username, :email, :password, :password_confirmation
 

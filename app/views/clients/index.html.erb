@@ -16,7 +16,9 @@
     <td><%= client.name %></td>
     <td><%= client.website %></td>
     <td><%= link_to 'Show', client %></td>
+    <% if can? :update, client %>    
     <td><%= link_to 'Edit', edit_client_path(client) %></td>
+  <% end %>
     <td><%= link_to 'Destroy', client, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>

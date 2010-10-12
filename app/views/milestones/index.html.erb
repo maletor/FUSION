@@ -9,9 +9,6 @@
 
 <% @milestones.each do |milestone| %>
   <tr>
-    <td><%= link_to 'Show', milestone %></td>
-    <td><%= link_to 'Edit', edit_milestone_path(milestone) %></td>
-    <td><%= link_to 'Destroy', milestone, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

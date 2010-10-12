@@ -1,20 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Deadline:</b>
-  <%= @project.deadline %>
-</p>
+<%= form_for [@project, @invitation] do |f| %>
 
-<p>
-  <b>Name:</b>
-  <%= @project.name %>
-</p>
+<% if @invitation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@invitation.errors.count, "error") %> prohibited this milestone from being saved:</h2>
 
-<p>
-  <b>Progress:</b>
-  <%= @project.progress %>
-</p>
+      <ul>
+      <% @invitation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= f.label :recipient_email, "Friend's email address" %><br />
+    <%= f.text_field :recipient_email %>
+  </p>
+  <p><%= f.submit "Invite!" %></p>
+<% end %>
 
-
-<%= link_to 'Edit', edit_client_project_path(@project) %> |
-<%= link_to 'Back', client_projects_path %>
+<%= render 'milestones/form' %>

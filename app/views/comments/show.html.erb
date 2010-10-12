@@ -9,7 +9,19 @@
   <b>Message:</b>
   <%= @comment.message %>
 </p>
+<p>
+  Comment last edited by <%= @comment.version > 1 ? @comment.versions.last.user.username : @comment.user.username %><br />
+  Comment version: <%= @comment.version %><br />
+  When: <%= time_ago_in_words @comment.updated_at %> ago
+</p>
+<p>
+  <%= current_user.username %>
+</p>
+</p>
+<% @comment.images.each do |image| %>
+    <%= image_tag image.url(:small) %>
+    Last edited by <%= image.version %>
+<% end %>
 
-
-<%= link_to 'Edit', edit_comment_path(@comment) %> |
-<%= link_to 'Back', comments_path %>
+<%= link_to 'Edit', edit_task_comment_path(@task, @comment) %> |
+<%= link_to 'Back', task_comments_path %>
