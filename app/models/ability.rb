@@ -2,10 +2,15 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    if user.class == Employee
-      can :manage, :all
-    else
-      can :read, :all
+    can :update, Comment do |comment|
+      comment.user_id == user.id and
+      Time.now < 15.minutes.since(comment.created_at)
+    end
+
+    can :destroy, Comment do |comment|
+      comment.user_id == user.id and
+       Time.now < 15.minutes.since(comment.created_at)
     end
   end
+
 end

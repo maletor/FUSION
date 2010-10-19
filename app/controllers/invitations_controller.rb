@@ -10,8 +10,12 @@ class InvitationsController < ApplicationController
     @invitation = @project.invitations.build(params[:invitation])
     @invitation.sender = current_user
 
-    if @invitation.save and UserMailer.project_invite(@project, @invitation.recipient_email).deliver
-      flash[:notice] = "Thank you, invitation sent."
+    if @invitation.save 
+      if UserMailer.project_invite(@project, @invitation.recipient_email).deliver
+        flash[:notice] = "Email successfully delivered."
+      else
+        flash[:notice] = "Unable to deliver your email right now. We will try again later."
+      end
       redirect_to @project
     else
       flash.now[:notice] = "Your email failed to deliver."

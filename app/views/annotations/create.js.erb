@@ -1,0 +1,2 @@
+$("#comment_image_<%= @annotation.image.id %> .notes").append("<%= escape_javascript(link_to @annotation.text, comment_image_annotation_path(@annotation.image, @annotation), :remote => true) %>");
+$("#new_annotation").hide();

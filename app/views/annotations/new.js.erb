@@ -1,0 +1,11 @@
+$('.result').html("<%= escape_javascript(render 'form') %>")
+$('#comment_image_<%= @image.id %> img').imgAreaSelect({fadeSpeed: 400, handles: true, instance: true,
+  onSelectChange: function (img, selection) {
+                    $('#annotation_x1').val(selection.x1);
+                    $('#annotation_x2').val(selection.x2);
+                    $('#annotation_y1').val(selection.y1);
+                    $('#annotation_y2').val(selection.y2);
+                    $('#annotation_width').val(selection.width);
+                    $('#annotation_height').val(selection.height);
+                  }
+});

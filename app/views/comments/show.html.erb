@@ -1,3 +1,9 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'imgareaselect-animated' %>
+  <%= javascript_include_tag 'jquery.imgareaselect.min' %>
+<% end %>
+
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -17,11 +23,22 @@
 <p>
   <%= current_user.username %>
 </p>
-</p>
+
+<div id="annotations">
 <% @comment.images.each do |image| %>
-    <%= image_tag image.url(:small) %>
-    Last edited by <%= image.version %>
+  <%= div_for image do %>
+  <%= image_tag 'trafalgar-square-annotated.jpg', :width => '600', :height => '398', :class => 'annotatable' %>
+<% end %>
+  Last edited by <%= image.version %>
+  <%= link_to "New Note", new_comment_image_annotation_path(image), :remote => true %>
+    <div id="notes">
+  <% image.annotations.each do |annotation| %> 
+    <%= link_to annotation.text, comment_image_annotation_path(image, annotation), :remote => true %>
+  <% end %>
+  </div>
+<div class="result">
+
+</div>
 <% end %>
 
-<%= link_to 'Edit', edit_task_comment_path(@task, @comment) %> |
-<%= link_to 'Back', task_comments_path %>
+</div>

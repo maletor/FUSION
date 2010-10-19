@@ -10,7 +10,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101012053213) do
+ActiveRecord::Schema.define(:version => 20101019013815) do
+
+  create_table "annotations", :force => true do |t|
+    t.integer  "image_id"
+    t.integer  "width"
+    t.integer  "height"
+    t.boolean  "editable"
+    t.text     "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "x1"
+    t.integer  "x2"
+    t.integer  "y1"
+    t.integer  "y2"
+  end
 
   create_table "assets", :force => true do |t|
     t.integer  "task_id"
@@ -35,6 +49,7 @@ ActiveRecord::Schema.define(:version => 20101012053213) do
   create_table "comment_images", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "comment_id"
   end
 
   create_table "comments", :force => true do |t|

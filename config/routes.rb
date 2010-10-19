@@ -1,5 +1,6 @@
 Fusion::Application.routes.draw do
 
+
   resources :cards
 
   resources :employees
@@ -7,7 +8,15 @@ Fusion::Application.routes.draw do
   resources :clients do
     resources :projects
   end
-  
+
+  namespace "comment" do
+
+    resources :images do
+      resources :annotations
+    end
+  end
+
+
   resources :projects do
     resources :invitations
     resources :milestones
@@ -16,7 +25,7 @@ Fusion::Application.routes.draw do
   resources :milestones do
     resources :tasks
   end
-  
+
   resources :tasks do 
     resources :comments
   end

@@ -1,0 +1,33 @@
+<%= form_for([@image, @annotation], :remote => true, :id => 'new_annotation') do |f| %>
+
+  <div class="field">
+    <%= f.hidden_field :x1 %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :x2 %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :y1 %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :y2 %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :width %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :height %>
+  </div>
+  <div class="field">
+    <%= f.label :editable %><br />
+    <%= f.check_box :editable %>
+  </div>
+  <div class="field">
+    <%= f.label :text %><br />
+    <%= f.text_area :text %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+

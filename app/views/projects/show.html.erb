@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<%= @project.name %>
+
 <%= form_for [@project, @invitation] do |f| %>
 
 <% if @invitation.errors.any? %>
