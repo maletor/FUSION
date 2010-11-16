@@ -9,7 +9,6 @@ class AnnotationsController < ApplicationController
 
   def show
     @annotation = Comment::Annotation.find(params[:id])
-
   end
 
   def new

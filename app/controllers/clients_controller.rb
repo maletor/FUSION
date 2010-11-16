@@ -1,5 +1,5 @@
 class ClientsController < ApplicationController
-
+  load_and_authorize_resource
   # GET /clients
   # GET /clients.xml
   def index
@@ -27,6 +27,9 @@ class ClientsController < ApplicationController
   # GET /clients/new.xml
   def new
     @client = Client.new
+    @card = @client.build_card
+    @website = @card.websites.build
+    @phone_number = @card.phone_numbers.build
 
     respond_to do |format|
       format.html # new.html.erb

@@ -1,5 +1,10 @@
 body { 
-  background:url(/images/bg.jpg) repeat-x left top;
+  background: #333;
+  color: #ccc;
+}
+
+.milestones {
+  margin-left: 20px;
 }
 
 #header {
@@ -44,85 +49,10 @@ body {
   margin-top: 15px;
 }
 
-a.btn, input[type=text], input[type=password] {
-    padding: 10px;
-    border: none;
-    border-top: 1px solid #eee;
-    border-radius: 6px;
-    -webkit-border-radius: 6px;
-    -moz-border-radius: 6px;
-    background: #ddd; /* for non-css3 browsers */
-    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffdddddd', endColorstr='#ff999999'); /* for IE */
-    background: -webkit-gradient(linear, left top, left bottom, from(#ddd), to(#999)); /* for webkit browsers */
-    background: -moz-linear-gradient(top,  #ddd,  #999); /* for firefox 3.6+ */
-    color: #444;
-    -webkit-box-shadow: 1px 2px 2px rgba(0, 0, 0, .5);
-    -moz-box-shadow: 1px 2px 2px rgba(0, 0, 0, .5);
-    box-shadow: 1px 2px 2px rgba(0, 0, 0, .5);
-    text-shadow: 0 1px 0 rgba(255, 255, 255, .8);
-    width: 120px;
-  font-size:14px;
-}
-
-.error, .notice, .success, .info {padding:0.8em 0;text-align:center;margin-bottom:20px;border:2px solid #ddd;}
-.error {background:#fbe3e4;color:#8a1f11;border-color:#fbc2c4;}
-.notice {background:#fff6bf;color:#514721;border-color:#ffd324;}
-.success {background:#e6efc2;color:#264409;border-color:#c6d880;}
-.info {background:#d5edf8;color:#205791;border-color:#92cae4;}
-.error a {color:#8a1f11;}
-.notice a {color:#514721;}
-.success a {color:#264409;}
-.info a {color:#205791;}
-
-
 form p {
   margin-bottom: 5px;
 }
 
-
-input[type=text] {
-  width: 200px;
-}
-a.btn {
-    text-decoration: none;
-}
-a.btn, input[type=submit], input[type=button] {
-  font-size:14px;
-    cursor: pointer;
-    padding: 10px;
-    border: none;
-    border-top: 1px solid #eee;
-    border-radius: 6px;
-    -webkit-border-radius: 6px;
-    -moz-border-radius: 6px;
-    background: #ddd; /* for non-css3 browsers */
-    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffdddddd', endColorstr='#ff999999'); /* for IE */
-    background: -webkit-gradient(linear, left top, left bottom, from(#ddd), to(#999)); /* for webkit browsers */
-    background: -moz-linear-gradient(top,  #ddd,  #999); /* for firefox 3.6+ */
-    color: #444;
-    -webkit-box-shadow: 1px 2px 2px rgba(0, 0, 0, .5);
-    -moz-box-shadow: 1px 2px 2px rgba(0, 0, 0, .5);
-    box-shadow: 1px 2px 2px rgba(0, 0, 0, .5);
-    text-shadow: 0 1px 0 rgba(255, 255, 255, .8);
-}
-a.btn:hover, input[type=submit]:hover, input[type=button]:hover {
-    background: #999; /* for non-css3 browsers */
-    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffaaaaaa', endColorstr='#ff444444'); /* for IE */
-    background: -webkit-gradient(linear, left top, left bottom, from(#aaa), to(#444)); /* for webkit browsers */
-    background: -moz-linear-gradient(top,  #aaa,  #444); /* for firefox 3.6+ */
-    color: #fff;
-    border-top: solid 1px #ccc;
-    text-shadow: 0 1px 0 rgba(0, 0, 0, .65);
-}
-a.btn:active, input[type=submit]:active, input[type=button]:active {
-    background: #444; /* for non-css3 browsers */
-    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff444444', endColorstr='#ffaaaaaa'); /* for IE */
-    background: -webkit-gradient(linear, left top, left bottom, from(#444), to(#aaa)); /* for webkit browsers */
-    background: -moz-linear-gradient(top,  #444,  #aaa); /* for firefox 3.6+ */
-    color: #fff;
-    border-top: solid 1px #999;	
-    text-shadow: 0 1px 0 rgba(0, 0, 0, .8);
-}
 
 
 h6 {
@@ -145,49 +75,95 @@ a {
   color: #0000FF;
 }
 
-#flash_notice, #flash_error, #flash_alert {
-  padding: 5px 8px;
-  margin: 10px 0;
+.ui-state-error p {
+  font-size: 0.8em;
+  margin: 1em 0;
 }
 
-#flash_notice {
-  background-color: #CFC;
-  border: solid 1px #6C6;
-}
-
-#flash_error, #flash_alert {
-  background-color: #FCC;
-  border: solid 1px #C66;
-}
-
-.fieldWithErrors {
-  display: inline;
-}
-
-.error_messages {
-  width: 400px;
-  border: 2px solid #CF0000;
-  padding: 0px;
-  padding-bottom: 12px;
+.ui-state-error {
   margin-bottom: 20px;
-  background-color: #f0f0f0;
-  font-size: 12px;
 }
 
-.error_messages h2 {
-  text-align: left;
-  font-weight: bold;
-  padding: 5px 10px;
-  font-size: 12px;
-  margin: 0;
-  background-color: #c00;
+#tools {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+  top: 0;
+  height: 45px;
+  width: 250px;
+  right: 100px;
+  padding-top: 10px;
+  padding-left: 20px;
+}
+
+#tools a {
+  display:table-cell; 
+  vertical-align:middle;
+  padding-left: 10px;
+  color: #ccc;
+}
+
+#tools img.border_left {
+  border-left: 2px dashed #ccc; 
+  padding-left: 20px;
+}
+
+#tools a.padding_right {
+  padding-right: 10px;
+}
+
+#tools a:hover {
   color: #fff;
 }
 
-.error_messages p {
-  margin: 8px 10px;
+#canvas, #ias_image {
+  position: absolute;
+  margin-top: 100px;
+  margin-left: 50%;
+  margin-right: 50%;
 }
 
-.error_messages ul {
-  margin: 0;
+#ias_image {
+  z-index: 1;
 }
+
+#sidebar {
+  position: absolute; 
+  left:0;
+  top: 0;
+  height: 100%;
+  width: 0px;
+  padding-left: 20px;
+  padding-top: 40px;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+#sidebar h2, #sidebar h3 {
+  font-size: 20px;
+  margin-bottom: 0;
+}
+
+#sidebar h4 {
+  font-size: 16px;
+}
+
+input.ui-button {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+#color_select {
+  background: url(/images/color_select.png);
+  margin-bottom: 20px;
+  height: 36px;
+  position: relative;
+  width: 36px;
+}
+
+#color_select div {
+  background: url(/images/color_select.png) 50% 50%;
+  height: 30px;
+  left: 3px;
+  position: absolute;
+  top: 3px;
+  width: 30px;
+}  

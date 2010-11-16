@@ -1,0 +1,41 @@
+
+<div id="tools"> 
+  <button id="button_pencil" type="button" id="drawpolyline">pencil</button> 
+  <input id="input_color" type="text" name="color" size="7" value="#000000" maxlength="7" /> 
+  <button id="button_color" type="button">choose color</button> 
+  <button id="button_eraser" type="button">eraser</button> 
+  <div> 
+    <button id="button_shape" type="button">shape</button> 
+    <div id="shape_menu"> 
+      <button id="button_rectangle" type="button">rectagle</button> 
+      <button id="button_oval" type="button">oval</button> 
+    </div> 
+  </div> 
+  <button id="button_zoom" type="button">Zoom</button> 
+  <button id="button_rotate" type="button">rotate</button> 
+  <input id="input_rotation" type="text" name="rotation" size="3" value="90" maxlength="3" /> 
+  <span>degrees</span> 
+  <button id="button_animate" type="button">animate</button> 
+  <button id="button_undo" type="button" onmousedown="Whiteboard.undo()">undo</button> 
+  <div> 
+    <button id="button_saveas" type="button">save as</button> 
+    <div id="saveas_menu"> 
+      <button id="button_savepng" type="button">png</button> 
+      <button id="button_savejpeg" type="button">jpeg</button> 
+      <button id="button_savebmp" type="button">bmp</button> 
+    </div> 
+  </div> 
+</div> 
+  <div id="test">
+    <%= form_for :drawing, :url => comment_image_drawings_path(@image.id), :method => :post do |f| %>
+      <%= f.hidden_field :base64 %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+  <canvas id="canvas"></canvas> 
+
+<% content_for :before_head do %>
+  <%= javascript_tag do %>
+    source = '<%= @image.url(:large) %>';
+  <% end %>
+<% end %>

@@ -1,7 +1,1 @@
-ias = $('#comment_image_<%= @annotation.image.id %> img').imgAreaSelect({ fadeSpeed: 400, handles: true, instance: true });
-
-// If nothing's selected, start with a tiny area in the center
-if (!ias.getSelection().width)
-  ias.setOptions({ show: true, x1: 0, y1: 0, x2: 0, y2: 0 });
-
-ias.animateSelection(<%= @annotation.x1 %>, <%= @annotation.y1 %>, <%= @annotation.x2 %>, <%= @annotation.y2 %>, 'slow');
+ias = $('#ias_image img').imgAreaSelect({ x1: <%= @annotation.x1 %>, y1: <%= @annotation.y1 %>, x2: <%= @annotation.x2 %>, y2: <%= @annotation.y2 %> });

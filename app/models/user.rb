@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   ## Niftily-generated authentication code below.
   # new columns need to be added here to be writable through mass assignment
-  attr_accessible  :username, :email, :password, :password_confirmation
+  attr_accessible  :username, :email, :password, :password_confirmation, :forgot_token
 
   attr_accessor :password
   before_save :prepare_password
@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
     self.password_hash == encrypt_password(pass)
   end
 
-  private
+  protected
 
   def prepare_password
     unless password.blank?
@@ -42,4 +42,22 @@ class User < ActiveRecord::Base
   def encrypt_password(pass)
     Digest::SHA1.hexdigest([pass, password_salt].join)
   end
+
+  def forgot_password!
+    generate_forgot_token
+    save(:validate => false)
+  end
+
+  def generate_forgot_token
+    self.forgot_token = Digest::SHA1.hexdigest([Time.now, rand].join)
+  end
+
+  def update_password(new_password, new_password_confirmation)
+    if new_password == new_password_confirmation
+      self.password = new_password
+      self.forgot_token = nil if valid?
+      save
+    end
+  end
+  
 end

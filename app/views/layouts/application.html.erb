@@ -2,8 +2,9 @@
 <html>
   <head>
     <title>FUSION</title>
-    <%= stylesheet_link_tag "reset", "text", "960", "application", :cache => true %>
-    <%= javascript_include_tag 'jquery', 'ui', 'rails', 'application', :cache => true %>
+    <%= stylesheet_link_tag "reset", "text", "960", "jquery-ui", 'imgareaselect-animated', "colorpicker", "application", :cache => true %>
+    <%= yield(:before_head) %>
+    <%= javascript_include_tag 'jquery-1.4.4.min', 'jquery-ui-1.8.6.min', 'jquery-imgareaselect-0.9.3.min', 'base64', 'canvas2image', "colorpicker", 'whiteboard', 'whiteboardui.jquery','rails', 'application', :cache => true %>
     <%= yield(:head) %>
     <%= favicon_link_tag %>
     <%= csrf_meta_tag %>

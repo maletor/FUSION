@@ -1,0 +1,29 @@
+$('#ias_image').hide();
+$('#canvas').show();
+$('#new_annotation').html("<%= escape_javascript render "/drawings/form" %>");
+$("input[type='submit']").button();
+
+$('#color_select').ColorPicker({
+	color: '#00000',
+	onShow: function (colpkr) {
+		$(colpkr).fadeIn(500);
+		return false;
+	},
+	onHide: function (colpkr) {
+		$(colpkr).fadeOut(500);
+		return false;
+	},
+	onChange: function (hsb, hex, rgb) {
+		$('#color_select div').css('backgroundColor', '#' + hex);
+                Whiteboard.setStrokeStyle('#' + hex);
+	}
+});
+
+
+Whiteboard.setStrokeStyle(WhiteboardUi.getElement('input_color').attr("value"));
+WhiteboardUi.activatePencil();
+
+$('#drawing_submit').click(function() {
+    $("#drawing_base64").val(document.getElementById("canvas").toDataURL('image/png'));
+  });
+

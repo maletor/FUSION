@@ -1,0 +1,35 @@
+
+<div id="tools"> 
+  <%= link_to((image_tag "annotate.png", :height => 35), new_comment_image_annotation_path(@image), :remote => true) %>
+  <%= link_to("Annotate", new_comment_image_annotation_path(@image), :remote => true, :class => 'padding_right') %>
+  <%= link_to((image_tag "pencil.gif", :height => 35, :class => 'border_left'), new_comment_image_drawing_path(@image), :remote => true) %>
+  <%= link_to("Draw", new_comment_image_drawing_path(@image), :remote => true) %>
+</div> 
+      <canvas id="canvas"></canvas> 
+
+<% content_for :before_head do %>
+  <%= javascript_tag do %>
+    source = '<%= @image.url(:large) %>';
+  <% end %>
+<% end %>
+
+<div id="sidebar">
+  <h2><%= "U2" %></h2>
+  <h3><%= @image.task.name %></h3>
+  <h4>version <%= @image.version %></h4>
+
+  <% if @image.annotations.length > 1 %>
+    <% @image.annotations.each do |a| %>
+      <% unless a.new_record? %>
+      <%= link_to a.text, comment_image_annotation_path(@image.id, a.id), :remote => true %>
+    <% end %>
+    <% end %>
+  <% end %>
+
+  <div id="new_annotation"></div>
+
+</div>
+
+<div id="ias_image">
+  <%= image_tag @image.url(:large) %>
+</div>

@@ -8,7 +8,7 @@ class Website < ActiveRecord::Base
   end
   
   def to_url
-      name.include? "://" ? name : "http://#{name}"
+    if name.include? "://" then name else "http://#{name}" end
   end
   
 end

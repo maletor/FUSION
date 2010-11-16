@@ -1,5 +1,10 @@
-$('.result').html("<%= escape_javascript(render 'form') %>")
-$('#comment_image_<%= @image.id %> img').imgAreaSelect({fadeSpeed: 400, handles: true, instance: true,
+$('#canvas').hide();
+$('#ias_image').show();
+
+$('#sidebar #new_annotation').html("<%= escape_javascript(render 'form') %>")
+$("input[type='submit']").button();
+
+$('#ias_image img').imgAreaSelect({fadeSpeed: 400, handles: true, instance: true,
   onSelectChange: function (img, selection) {
                     $('#annotation_x1').val(selection.x1);
                     $('#annotation_x2').val(selection.x2);

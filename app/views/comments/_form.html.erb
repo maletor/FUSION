@@ -20,8 +20,10 @@
     <%= f.text_area :message %>
   </div>
   <%= f.fields_for :images do |image_form| %>
+    <%= image_form.hidden_field :task_id, :value => @task.id %>
+    
     <p>
-      <%= image_form.label :image %>
+      <%= image_form.label :attachment %>
       <%= image_form.file_field :attachment %>
     </p>
   <% end %>

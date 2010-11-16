@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
-  # GET /projects
-  # GET /projects.xml
+  before_filter :login_required
+
   def index
     @projects = Project.all
 
@@ -10,8 +10,6 @@ class ProjectsController < ApplicationController
     end
   end
 
-  # GET /projects/1
-  # GET /projects/1.xml
   def show
     @project = Project.find(params[:id])
     @milestone = @project.milestones.build

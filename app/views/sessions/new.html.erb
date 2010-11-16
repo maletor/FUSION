@@ -7,20 +7,31 @@
     </h6>  
 
     <% if flash[:notice] %>
-      <p class="grid_6 push_3 notice"><%= flash[:notice] %></p>
+      <div class="ui-state-highlight ui-corner-all">
+        <p>
+          <span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+          <%= flash[:notice] %>
+        </p>
+      </div>
     <% end %>
     <% if flash[:error] %>
-      <p class="grid_6 push_3 error"><%= flash[:error] %></p>
+      <div class="grid_6 push_3 ui-widget">
+        <div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
+          <p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> 
+            <strong>Alert:</strong> <%= flash[:error] %></p>
+        </div>
+      </div>
+
+      <div class="clear"></div>
     <% end %>
-    
+
     <%= form_tag sessions_path do %>
-      <p class="grid_3 prefix_3">
-        <%= text_field_tag :login, params[:login], :value => "Email" %>
-      </p>
-      <p class="grid_2">
-        <%= password_field_tag :password, "password"  %>
-      </p>
-      <p id="submit" class="grid_1 suffix_3"><%= submit_tag "Log In", :class => "btn" %></p>
+      <div class="grid_6 push_3">
+        <%= text_field_tag :login, params[:login], :value => "Email", :class => "ui-state-default ui-corner-all" %>
+        <%= password_field_tag :password, "password", :class => "ui-state-default ui-corner-all" %>
+     <%= submit_tag "Log In", :class => "ui-button ui-state-default ui-corner-all ui-button-text-only", :id => "button", :role => "button", "aria-disabled" => false %>
+    </div>
+
     <% end %>
     <%# http://blog.eizesus.com/2010/03/creating-a-rails-authentication-system-on-mongoid-part-3-password-resets-8-3-2010/ %>
     <!-- <span id="forgot" class="grid_6 push_2"><%# link_to "Forgot password?", root_path %></span> -->

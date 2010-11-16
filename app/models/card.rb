@@ -3,7 +3,6 @@ class Card < ActiveRecord::Base
   has_many :phone_numbers
   has_many :websites
 
-  ## Needs validations
   accepts_nested_attributes_for :phone_numbers
   accepts_nested_attributes_for :websites
 end

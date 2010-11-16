@@ -11,4 +11,9 @@ class UserMailer < ActionMailer::Base
     @project = project
     mail(:to => email, :subject => "PRODfusion: #{project.name}")
   end
+
+  def forgot_password(user)
+    @user = user
+    mail(:to => user.email, :subject => "PRODfusion // Forgot Your Password?")
+  end
 end

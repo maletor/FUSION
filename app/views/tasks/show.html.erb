@@ -1,6 +1,6 @@
 <% content_for :head do %>
   <%= stylesheet_link_tag 'imgareaselect-animated' %>
-  <%= javascript_include_tag 'jquery.imgareaselect.min' %>
+  <%= javascript_include_tag 'jquery-imgareaselect-0.9.3.min' %>
 <% end %>
 
 <p id="notice"><%= notice %></p>
@@ -24,7 +24,7 @@
         <%= image_tag image.url(:large) %>
         Version: <%= image.version %>
   <%= link_to "New Note", new_comment_image_annotation_path(image), :remote => true %>
-        
+  <%= link_to "New Drawing", new_comment_image_drawing_path(image) %>
         <div class="notes">
   <% image.annotations.each do |annotation| %> 
     <%= link_to annotation.text, comment_image_annotation_path(image, annotation), :remote => true %>

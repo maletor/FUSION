@@ -26,12 +26,9 @@ class CommentsController < ApplicationController
   # GET /comments/new
   # GET /comments/new.xml
   def new
-    @comment = Comment.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @comment }
-    end
+    @task = Task.find(params[:task_id])
+    @comment = @task.comments.build
+    @comment.images.build
   end
 
   # GET /comments/1/edit

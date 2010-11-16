@@ -16,17 +16,40 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :website %><br />
-    <%= f.text_field :website %>
-  </div>
+  <%= f.fields_for @card do |card_form| %>
+    <div class="field">
+      <%= card_form.label :public %>
+      <%= card_form.check_box :public %>
+    </div>
+    <%= card_form.fields_for @website do |website_form| %>
+      <div class="field">
+        <%= website_form.label :url %>
+        <%= website_form.text_field :url %>
+      </div>
+      <div class="field">
+        <%= website_form.label :type %>
+        <%= website_form.select :type, Website::TYPES %>
+      </div>
+    <% end %>
+    <%= card_form.fields_for @phone_number do |phone_form| %>
+      <div class="field">
+        <%= phone_form.label :number %>
+        <%= phone_form.phone_field :number %>
+      </div>
+      <div class="field">
+        <%= phone_form.label :type %>
+        <%= phone_form.select :type, PhoneNumber::TYPES %>
+      </div>
+    <% end %>
+
+  <% end %>
   <div class="field">
     <%= f.label :username %><br />
     <%= f.text_field :username %>
   </div>
   <div class="field">
     <%= f.label :email, "Email Address" %><br />
-    <%= f.text_field :email %>
+    <%= f.email_field :email %>
   </div>
   <div class="field">
     <%= f.label :password %><br />

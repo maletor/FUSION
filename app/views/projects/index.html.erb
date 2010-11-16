@@ -1,24 +1,20 @@
-<h1>Listing projects</h1>
+<div class="container_12">
+  <div class="grid_12">
+    Welcome <%= current_user.name.split.first %>, <%= link_to "Logout", logout_path %>
+</div>
+<div class="clear"></div>
+<div class="grid_4">
+  <h3>Your Projects</h3>
+  <% @projects.each do |p| %>
+    <p><%= p.name%></p>
+    <div class="milestones">
+      <% p.milestones.each do |m| %>
+        <%= m.name %>
+      <% end %>
+    </div>
+  <% end %>
 
-<table>
-  <tr>
-    <th>Client</th>
-    <th>Deadline</th>
-    <th>Name</th>
-    <th>Progress</th>
-  </tr>
-
-<% @projects.each do |project| %>
-  <tr>
-    <td><%= project.deadline %></td>
-    <td><%= project.name %></td>
-    <td><%= project.progress %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
+</div>
 
 
-
-<%= link_to 'New Project', new_client_project_path %>
+</div>

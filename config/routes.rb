@@ -1,5 +1,5 @@
 Fusion::Application.routes.draw do
-
+  resources :passwords
 
   resources :cards
 
@@ -12,6 +12,7 @@ Fusion::Application.routes.draw do
   namespace "comment" do
 
     resources :images do
+      resources :drawings
       resources :annotations
     end
   end
@@ -34,7 +35,11 @@ Fusion::Application.routes.draw do
   match 'logout' => 'sessions#destroy', :as => :logout
   match 'login' => 'sessions#new', :as => :login
   resources :sessions
-  resources :users
+
+  resources :users do
+    resource :password
+  end
+
   resource :dashboard
 
   root :to => 'dashboards#show'
