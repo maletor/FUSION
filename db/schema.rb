@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101116040241) do
+ActiveRecord::Schema.define(:version => 20101117194438) do
 
   create_table "annotations", :force => true do |t|
     t.integer  "image_id"
@@ -27,9 +27,6 @@ ActiveRecord::Schema.define(:version => 20101116040241) do
   end
 
   create_table "assets", :force => true do |t|
-    t.integer  "task_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.string   "attachment_file_name"
     t.string   "attachment_content_type"
     t.integer  "attachment_file_size"
@@ -92,13 +89,13 @@ ActiveRecord::Schema.define(:version => 20101116040241) do
   end
 
   create_table "projects", :force => true do |t|
-    t.datetime "deadline"
     t.string   "name"
     t.integer  "progress"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "client_id"
+    t.datetime "deadline"
   end
 
   create_table "tasks", :force => true do |t|
