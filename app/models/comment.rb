@@ -3,7 +3,7 @@ class Comment < ActiveRecord::Base
   belongs_to :task
   belongs_to :user
 
-  has_many :images, :as => :assetable, :class_name => "Comment::Image", :dependent => :destroy
+  has_many :images, :class_name => "Comment::Image", :dependent => :destroy
   accepts_nested_attributes_for :images
   
 end

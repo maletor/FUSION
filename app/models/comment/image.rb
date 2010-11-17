@@ -1,6 +1,6 @@
-class Comment::Image < Asset
+class Comment::Image < ActiveRecord::Base
   versioned
-  has_attached_file :attachment, :styles => { :small => "200x150>", :large => "400x300>" }, 
+  has_attached_file :attachment, :styles => { :small => "200x150>", :large => "800x800>" }, 
     :path => ":rails_root/public/assets/images/:id/:version/:basename.:extension",
     :url => "/assets/images/:id/:version/:basename.:extension",
     :keep_old_files => true

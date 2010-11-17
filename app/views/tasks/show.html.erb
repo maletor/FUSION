@@ -21,7 +21,7 @@
   <% comment.images.each do |image| %>
     <%= div_for image do %>
       <% unless image.new_record? %>
-        <%= image_tag image.url(:large) %>
+        <%= image_tag image.attachment(:large) %>
         Version: <%= image.version %>
   <%= link_to "New Note", new_comment_image_annotation_path(image), :remote => true %>
   <%= link_to "New Drawing", new_comment_image_drawing_path(image) %>

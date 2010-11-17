@@ -5,31 +5,42 @@
   <%= link_to((image_tag "pencil.gif", :height => 35, :class => 'border_left'), new_comment_image_drawing_path(@image), :remote => true) %>
   <%= link_to("Draw", new_comment_image_drawing_path(@image), :remote => true) %>
 </div> 
-      <canvas id="canvas"></canvas> 
+<canvas id="canvas"></canvas> 
 
 <% content_for :before_head do %>
   <%= javascript_tag do %>
-    source = '<%= @image.url(:large) %>';
+    source = '<%= @image.attachment(:large) %>';
   <% end %>
 <% end %>
 
 <div id="sidebar">
   <h2><%= "U2" %></h2>
-  <h3><%= @image.task.name %></h3>
   <h4>version <%= @image.version %></h4>
 
   <% if @image.annotations.length > 1 %>
-    <% @image.annotations.each do |a| %>
-      <% unless a.new_record? %>
-      <%= link_to a.text, comment_image_annotation_path(@image.id, a.id), :remote => true %>
-    <% end %>
-    <% end %>
+    <div id="annotation_list">
+      <% @image.annotations.each do |a| %>
+        <% unless a.new_record? %>
+          <p><%= link_to annotation_text(a), comment_image_annotation_path(@image.id, a.id), :remote => true %></p>
+        <% end %>
+      <% end %>
+    </div>
   <% end %>
 
+    <% if @image.drawings.length > 1 %>
+    <div id="drawing_list">
+      <% @image.drawings.each do |d| %>
+        <% unless d.new_record? %>
+          <p><%= link_to d.id, comment_image_drawing_path(@image.id, d.id), :remote => true %></p>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+  
   <div id="new_annotation"></div>
 
 </div>
 
 <div id="ias_image">
-  <%= image_tag @image.url(:large) %>
+  <%= image_tag @image.attachment(:large) %>
 </div>

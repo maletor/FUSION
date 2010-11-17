@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101117194438) do
+ActiveRecord::Schema.define(:version => 20101117210430) do
 
   create_table "annotations", :force => true do |t|
     t.integer  "image_id"
@@ -47,6 +47,11 @@ ActiveRecord::Schema.define(:version => 20101117194438) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "comment_id"
+    t.integer  "task_id"
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
   end
 
   create_table "comments", :force => true do |t|

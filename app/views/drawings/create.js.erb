@@ -1,1 +1,1 @@
-alert("<%= @drawing[:base_64] %>");
+$("#annotation_list").append("<p> <%= escape_javascript(link_to "Drawing", comment_image_drawing_path(@drawing.image, @drawing), :remote => true) %> </p>");
