@@ -1,10 +1,10 @@
 class DrawingsController < ApplicationController
   def new
-    @image = Comment::Image.find(params[:image_id])
+    @image = Image.find(params[:image_id])
   end
 
   def create
-    @image = Comment::Image.find(params[:image_id])
+    @image = Image.find(params[:image_id])
     @drawing = @image.drawings.build
 
     temp = params[:drawing][:base64].split(";base64,").last

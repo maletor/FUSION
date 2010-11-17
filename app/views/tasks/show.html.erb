@@ -23,8 +23,8 @@
       <% unless image.new_record? %>
         <%= image_tag image.attachment(:large) %>
         Version: <%= image.version %>
-  <%= link_to "New Note", new_comment_image_annotation_path(image), :remote => true %>
-  <%= link_to "New Drawing", new_comment_image_drawing_path(image) %>
+  <%= link_to "New Note", new_image_annotation_path(image), :remote => true %>
+  <%= link_to "New Drawing", new_image_drawing_path(image) %>
         <div class="notes">
   <% image.annotations.each do |annotation| %> 
     <%= link_to annotation.text, comment_image_annotation_path(image, annotation), :remote => true %>

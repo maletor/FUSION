@@ -9,12 +9,10 @@ Fusion::Application.routes.draw do
     resources :projects
   end
 
-  namespace "comment" do
 
-    resources :images do
-      resources :drawings
-      resources :annotations
-    end
+  resources :images do
+    resources :drawings
+    resources :annotations
   end
 
 

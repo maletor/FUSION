@@ -1,6 +1,6 @@
 class AnnotationsController < ApplicationController
-  respond_to :html, :js
-
+  respond_to :js
+  
   def index
     @annotations = Annotation.all
 
@@ -8,16 +8,16 @@ class AnnotationsController < ApplicationController
   end
 
   def show
-    @annotation = Comment::Annotation.find(params[:id])
+    @annotation = Annotation.find(params[:id])
   end
 
   def new
-    @image = Comment::Image.find(params[:image_id])
+    @image = Image.find(params[:image_id])
     @annotation = @image.annotations.build
   end
 
   def create
-    @image = Comment::Image.find(params[:image_id])
+    @image = Image.find(params[:image_id])
     @annotation = @image.annotations.build(params[:annotation])
 
     flash[:notice] = 'Annotation was successfully created.' if @annotation.save
