@@ -12,7 +12,9 @@
   <body>
     <div class="container_12">
       <div id="header" class="grid_12">
-        Welcome <%= current_user.name %>, <%= link_to "Logout", logout_path %>
+        <% if logged_in? %>
+          Welcome <%= current_user.name %>, <%= link_to "Logout", logout_path %>
+        <% end %>
       </div>
 
       <%= yield %>
