@@ -1,10 +1,5 @@
 class ImagesController < ApplicationController
   def show
-    @image = Comment::Image.find(params[:id])
-    @annotation = @image.annotations.build
+    @image = Image.find(params[:id])
   end
-
-
-
 end
-

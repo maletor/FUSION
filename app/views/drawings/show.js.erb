@@ -1,0 +1,4 @@
+$('#canvas').hide();
+$('#ias_image').show();
+$('#ias_image').html("<%= escape_javascript image_tag @image.attachment.url %>");
+

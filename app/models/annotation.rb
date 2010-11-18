@@ -1,3 +1,3 @@
 class Annotation < ActiveRecord::Base
-  belongs_to :image, :class_name => "Comment::Image"
+  belongs_to :image
 end

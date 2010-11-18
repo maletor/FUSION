@@ -1,2 +1,1 @@
-$("#annotation_list").append("<p> <%= escape_javascript(link_to annotation_text(@annotation), comment_image_annotation_path(@annotation.image, @annotation), :remote => true) %> </p>");
-$("#new_annotation").hide();
+$("#annotation_list").append("<p> <%= escape_javascript(link_to annotation_text(@annotation), image_annotation_path(@annotation.image, @annotation), :remote => true) %> </p>");

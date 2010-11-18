@@ -27,7 +27,7 @@
   <%= link_to "New Drawing", new_image_drawing_path(image) %>
         <div class="notes">
   <% image.annotations.each do |annotation| %> 
-    <%= link_to annotation.text, comment_image_annotation_path(image, annotation), :remote => true %>
+    <%= link_to annotation.text, image_annotation_path(image, annotation), :remote => true %>
   <% end %>
       <% end %>
     <% end %>

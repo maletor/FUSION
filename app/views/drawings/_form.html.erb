@@ -1,6 +1,6 @@
 <div id="color_select"><div></div></div>
 <input id="input_color" type="hidden" name="color" size="7" value="#000000" maxlength="7">
-<%= form_for :drawing, :url => image_drawings_path(@image.id), :method => :post do |f| %>
+<%= form_for :drawing, :url => image_drawings_path(@image.id), :method => :post, :remote => true do |f| %>
   <%= f.hidden_field :base64 %>
 <div class="field">
     <%= f.label :text, "Note" %><br />

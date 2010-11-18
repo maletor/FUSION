@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101117230332) do
+ActiveRecord::Schema.define(:version => 20101118191737) do
 
   create_table "annotations", :force => true do |t|
     t.integer  "image_id"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(:version => 20101117230332) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "image_id"
+    t.integer  "image_version"
   end
 
   create_table "images", :force => true do |t|

@@ -28,7 +28,7 @@
     <div id="drawing_list">
       <% @image.drawings.each do |d| %>
         <% unless d.new_record? %>
-          <p><%= link_to d.id, image_drawing_path(@image.id, d.id), :remote => true %></p>
+          <p><%= link_to drawing_text(d), image_drawing_path(@image.id, d.id), :remote => true %></p>
         <% end %>
       <% end %>
     </div>
