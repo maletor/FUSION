@@ -1,12 +1,15 @@
+/* 
+ * Colors
+ * RED: FD0132
+ * GRA: 666666
+ * GRE: 669801
+ * BLU: 0166FF
+ */
+
 body { 
-  background: #333;
-  color: #e6e6e6;
+  background: #fff;
+  color: #000;
 }
-
-.milestones {
-  margin-left: 20px;
-}
-
 
 #remember, #forgot {
   text-align: right;
@@ -52,7 +55,12 @@ a img {
 }
 
 a {
-  color: #0000FF;
+  color: magenta;
+  text-decoration: none;
+}
+
+a:hover, a:active {
+  color: black;
 }
 
 .ui-state-error p {
@@ -96,10 +104,6 @@ a {
 }
 
 #canvas, #ias_image {
-  position: absolute;
-  margin-top: 100px;
-  margin-left: 50%;
-  margin-right: 50%;
 }
 
 #ias_image {
@@ -147,3 +151,158 @@ input.ui-button {
   top: 3px;
   width: 30px;
 }  
+
+#projects li{
+  border-left: 10px solid #ea5200;
+  padding-left:10px;
+  margin-bottom: 10px;
+  list-style-type: none;
+  margin-left:15px;
+}
+
+#milestones{
+    border-bottom: 1px solid #373737;
+    margin: 0;
+    padding: 0;
+}
+
+#milestones li{
+    margin-right: 3px;
+    padding: 10px;
+    color: #FFF;
+}
+
+.behind{
+    background: #FE0034;
+}
+
+.no_update{
+    background: #666666;
+}
+
+.completed{
+    background: #679902;
+}
+
+.new_update{
+    background: #0069F9;
+}
+
+#aspects{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+#aspects li {
+    border-bottom: 2px solid #666666;
+    margin-left: 0;
+    padding: 10px 0 5px 15px;
+    font-size: 16px;
+}
+
+#aspects li .title {
+  cursor: pointer;
+}
+
+#aspects li:first-child {
+    padding-top: 0;
+}
+
+#aspects .title{
+    text-transform: uppercase;
+}
+
+#aspects .info p {
+  display: inline;
+}
+
+#aspects .info{
+  margin-top: 20px;
+}
+
+#aspects .info img {
+  padding: 20px;
+  border: 1px solid #666;
+}
+
+#aspects .info img:hover {
+  padding: 20px;
+  border: 1px solid magenta;
+}
+
+#new_status{
+    
+}
+
+
+#footer {
+  padding-bottom: 40px;
+  margin-top: 100px;
+}
+
+#header {
+  position: relative;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+#header h1 {
+  font-size:24px;
+  margin-bottom: 0;
+  font-weight: bold;
+  margin-right: 20px;
+}
+  
+#header img {
+  margin-right: 50px;
+}
+
+#header p {
+  display: inline;
+  text-align: right;
+}
+
+#projects h2 {
+  margin-bottom: 0;
+}
+
+#projects li.selected, #projects li:hover {
+  cursor: pointer;
+  background: #ccc;
+}
+
+.note {
+	display: none;
+	border: 2px dotted #666;
+	overflow: hidden; 
+	position: absolute; 
+	z-index: 0;
+	cursor: text;
+}
+
+.notep {
+	display: none; 
+	background: #fff; 
+	font-size: 12px; 
+	margin-top: 0px; 
+	padding: 8px;
+	position: absolute;
+	cursor: text;
+} 
+
+#noteform {
+	display: none;
+	position: absolute;
+	width: 250px;
+}
+
+#noteform textarea{
+	width: 100%;
+}
+
+span.ui-icon {
+float: left;
+margin-right: 4px;
+}

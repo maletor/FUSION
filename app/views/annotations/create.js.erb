@@ -1,1 +1,3 @@
-$("#annotation_list").append("<p> <%= escape_javascript(link_to annotation_text(@annotation), image_annotation_path(@annotation.image, @annotation), :remote => true) %> </p>");
+$("#annotation_list").append("<%= escape_javascript(render @annotation) %>");
+$('#img_note').imgAreaSelect({ hide: true, disable:true }); 
+$('#noteform').remove();

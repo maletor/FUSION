@@ -1,25 +1,27 @@
-<p id="notice"><%= notice %></p>
-
-<%= @project.name %>
-
-<%= form_for [@project, @invitation] do |f| %>
-
-<% if @invitation.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@invitation.errors.count, "error") %> prohibited this milestone from being saved:</h2>
-
-      <ul>
-      <% @invitation.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+<div id="projects" class="grid_3">
+  <h2><%= @project.name %></h2>
+  <h4>Tasks</h4>
+  <p>Sort by: <%= link_to "due date", project_path(@project, :sort => "due") %> | <%= link_to "priority", project_path(@project, :sort => "priority") %> | <%= link_to "name", project_path(@project, :sort => "name") %></p>
+  <ul>
+    <% @project.tasks.each do |t| %>
+      <% unless t.new_record? %>
+        <span class="ui-icon ui-icon-carat-1-e"></span><li><%= link_to t.name, project_task_path(t.project, t) %> <%= link_to project_task_path(t.project, t), :method => :delete, :confirm => "Are you sure?" do %><span style="float:right" class="ui-icon ui-icon-close"></span><% end %></li>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <p>
-    <%= f.label :recipient_email, "Friend's email address" %><br />
-    <%= f.text_field :recipient_email %>
-  </p>
-  <p><%= f.submit "Invite!" %></p>
-<% end %>
+    <% end %>
+  </ul>
+  <%= render 'tasks/form', :locals => { :project => @project } %>
+</div>
 
-<%= render 'milestones/form' %>
+<div class="grid_9">
+
+  <ul id="aspects">
+  
+    <li id="graphics">
+      <div class="title">Graphics</div>
+      <div class="info">
+        <%= render @images %>
+        <br />
+      </div>
+    </li>
+  </ul>
+</div>

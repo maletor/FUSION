@@ -1,0 +1,5 @@
+<% unless comment.new_record? %>
+  <span style="color:#666;font-style:oblique"><%= comment.user.name %>:</span> <%= comment.message %> <small style="color: #666;font-size:12px;"><%= time_ago_in_words comment.updated_at %>ago</small>
+<% end %> 
+
+<br />

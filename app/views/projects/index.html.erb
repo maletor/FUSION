@@ -1,20 +1,24 @@
-<div class="container_12">
-  <div class="grid_12">
-    Welcome <%= current_user.name.split.first %>, <%= link_to "Logout", logout_path %>
-</div>
-<div class="clear"></div>
-<div class="grid_4">
+<div class="grid_3">
   <h3>Your Projects</h3>
   <% @projects.each do |p| %>
     <p><%= p.name%></p>
-    <div class="milestones">
-      <% p.milestones.each do |m| %>
-        <%= m.name %>
-      <% end %>
-    </div>
   <% end %>
-
+</div>
+<div class="grid_3">
+  <h3>Users</h3>
+  <% User.all.each do |u| %>
+    <%= link_to u.name, u %>
+  <% end %>
+  <p>
+    <%= link_to "new client", new_client_path %>
+    <%= link_to "new employee", new_employee_path %>
+  </p>
 </div>
 
-
+<div class="grid_3">
+  <h3>Messages</h3>
+  <p>
+    Here is all the messages that have been sent to you from a task.
+  </p>
 </div>
+

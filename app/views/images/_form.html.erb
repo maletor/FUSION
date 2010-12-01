@@ -1,0 +1,11 @@
+<%= form_for @image, :html => { :multipart => true } do |f| %>
+  <%= f.hidden_field :project_id, :value => params[:project_id] %>
+
+    <%= f.hidden_field :task_id, :value => params[:id] %>
+
+  <p>
+    <%= f.label :attachment %>
+    <%= f.file_field :attachment %>
+  </p>
+  <%= f.submit(:disable_with => "Processing request") %>
+<% end %>

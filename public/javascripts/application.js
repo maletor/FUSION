@@ -1,34 +1,43 @@
 $(document).ready(function() {
 
-  $('#tools').hide();
-  $('#tools').slideDown('slow');
-    $('#sidebar').animate({ width: '250' }, "slow" );
-
-  $('#aspects li').each(function(){
-        $(this).find('.title').click(function(){
-            $(this).parent().find('.info').slideToggle();
-        });
+  if ($('#aspects').length > 0) {
+    $('#aspects li').each(function(){
+      $(this).find('.title').click(function(){
+        $(this).parent().find('.info').slideToggle();
+      });
     });
+  }
 
+});
 
-  WhiteboardUi.init($("#canvas"));
-  var elem = document.getElementById('canvas');
-  var context = elem.getContext('2d');
-  var img = new Image();
+$.extend($.imgAreaSelect, {
+  animate: function (fx) {
+             var start = fx.elem.start, end = fx.elem.end, now = fx.now,
+curX1 = Math.round(start.x1 + (end.x1 - start.x1) * now),
+curY1 = Math.round(start.y1 + (end.y1 - start.y1) * now),
+curX2 = Math.round(start.x2 + (end.x2 - start.x2) * now),
+curY2 = Math.round(start.y2 + (end.y2 - start.y2) * now);
+fx.elem.ias.setSelection(curX1, curY1, curX2, curY2);
+fx.elem.ias.update();
+           },
+  prototype: $.extend($.imgAreaSelect.prototype, {
+               animateSelection: function (x1, y1, x2, y2, duration) {
+                                   var fx = $.extend($('<div/>')[0], {
+                                     ias: this,
+                                   start: this.getSelection(),
+                                   end: { x1: x1, y1: y1, x2: x2, y2: y2 }
+                                   });
 
-  var pic_real_width;
-  var pic_real_height;
+                                   if (!$.imgAreaSelect.fxStepDefault) {
+                                     $.imgAreaSelect.fxStepDefault = $.fx.step._default;
+                                     $.fx.step._default = function (fx) {
+                                       return fx.elem.ias ? $.imgAreaSelect.animate(fx) :
+    $.imgAreaSelect.fxStepDefault(fx);
+                                     };
+                                   }
 
-  $(img).load(function() {
-    $('#canvas').removeAttr("width").removeAttr("height").css({ width: "", height: "" }); // Remove css dimensions as well
-    $('#canvas').attr("width", this.width);
-    $('#canvas').attr("height", this.height);
-    $('#canvas').css("left", -(this.width / 2)); 
-    $('#ias_image').css("left", -(this.width / 2)); 
-    context.drawImage(this, 0, 0);
-  });
-
-  img.src = source;
-
-  });
+                                   $(fx).animate({ cur: 1 }, duration, 'swing');
+                                 }
+             })
+});
 

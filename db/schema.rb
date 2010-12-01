@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101118191737) do
+ActiveRecord::Schema.define(:version => 20101201000321) do
 
   create_table "annotations", :force => true do |t|
     t.integer  "image_id"
@@ -21,9 +21,10 @@ ActiveRecord::Schema.define(:version => 20101118191737) do
     t.integer  "width"
     t.integer  "height"
     t.boolean  "editable"
-    t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
+    t.text     "note"
   end
 
   create_table "assets", :force => true do |t|
@@ -61,6 +62,7 @@ ActiveRecord::Schema.define(:version => 20101118191737) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.integer  "project_id"
   end
 
   create_table "drawings", :force => true do |t|
@@ -78,6 +80,10 @@ ActiveRecord::Schema.define(:version => 20101118191737) do
     t.string   "attachment_content_type"
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
+    t.integer  "project_id"
+    t.boolean  "approved",                :default => false
+    t.integer  "approver_id"
+    t.datetime "approved_at"
   end
 
   create_table "invitations", :force => true do |t|
@@ -111,6 +117,7 @@ ActiveRecord::Schema.define(:version => 20101118191737) do
     t.integer  "user_id"
     t.integer  "client_id"
     t.datetime "deadline"
+    t.integer  "task_id"
   end
 
   create_table "tasks", :force => true do |t|
@@ -119,6 +126,9 @@ ActiveRecord::Schema.define(:version => 20101118191737) do
     t.boolean  "complete"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "due"
+    t.integer  "priority"
+    t.integer  "project_id"
   end
 
   create_table "user_avatars", :force => true do |t|

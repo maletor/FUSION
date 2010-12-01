@@ -1,5 +1,5 @@
 module AnnotationsHelper
   def annotation_text(annotation)
-    annotation.text.blank? ? "Annotation" : annotation.text
+    annotation.note.blank? ? "Annotation" : annotation.note
   end
 end

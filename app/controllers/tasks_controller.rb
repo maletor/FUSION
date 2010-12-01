@@ -15,11 +15,22 @@ class TasksController < ApplicationController
   # GET /tasks/1
   # GET /tasks/1.xml
   def show
+    @project = Project.find(params[:project_id])
     @task = Task.find(params[:id])
+
+    @images = @task.images
+    @image = @task.images.build
     @comment = @task.comments.build
     @comments = @task.comments
+    
+    if params[:sort] = "priority"
+      @tasks = @project.tasks.order("priority desc") 
+    elsif params[:sort] = "name"
+      @tasks = @project.tasks.order("name asc") 
+    else
+      @tasks = @project.tasks.order("due desc") 
+    end
 
-    @comment.images.build
 
     respond_to do |format|
       format.html # show.html.erb
@@ -49,14 +60,10 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(params[:task])
 
-    respond_to do |format|
-      if @task.save
-        format.html { redirect_to(milestone_task_path(@task), :notice => 'Task was successfully created.') }
-        format.xml  { render :xml => @task, :status => :created, :location => @task }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @task.errors, :status => :unprocessable_entity }
-      end
+    if @task.save
+      redirect_to(project_task_path(@task.project, @task))
+    else
+      render :template => "projects/show" 
     end
   end
 
@@ -82,9 +89,6 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     @task.destroy
 
-    respond_to do |format|
-      format.html { redirect_to(tasks_url) }
-      format.xml  { head :ok }
-    end
+    redirect_to project_task_path(@task.project, @task)
   end
 end

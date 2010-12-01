@@ -16,9 +16,12 @@ Fusion::Application.routes.draw do
   end
 
 
+  resources :invitations
+
   resources :projects do
-    resources :invitations
+    resources :tasks
     resources :milestones
+    resources :images
   end
 
   resources :milestones do

@@ -12,23 +12,15 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :author %><br />
-    <%= f.text_field :author %>
-  </div>
-  <div class="field">
     <%= f.label :message %><br />
-    <%= f.text_area :message %>
+    <%= f.text_field :message %>
   </div>
-  <%= f.fields_for :images do |image_form| %>
-    <%= image_form.hidden_field :task_id, :value => @task.id %>
-    
-    <p>
-      <%= image_form.label :attachment %>
-      <%= image_form.file_field :attachment %>
-    </p>
-  <% end %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
 
-
+  <div id="users">
+    <% User.all.each do |u| %>
+    <% end %>
+  </div>
 
   <div class="actions">
     <%= f.submit %>

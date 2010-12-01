@@ -41,8 +41,8 @@ class CommentsController < ApplicationController
   # POST /comments.xml
   def create
     @task = Task.find(params[:task_id])
-    @comment = @task.comments.create(params[:comment].merge(:user_id => current_user.id))
-    redirect_to task_path(@task)
+    @comment = @task.comments.create(params[:comment])
+    redirect_to project_task_path(@task.project, @task)
   end
 
   # PUT /comments/1

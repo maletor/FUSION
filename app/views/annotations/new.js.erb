@@ -1,16 +1,36 @@
-$('#canvas').hide();
-$('#ias_image').show();
+$('#projects').append("<%= escape_javascript render 'form' %>");
 
-$('#sidebar #new_annotation').html("<%= escape_javascript(render 'form') %>")
-$("input[type='submit']").button();
+ias = $('#img_note').imgAreaSelect({ handles: true, movable: true, resizable: true, instance: true, enable: true, onSelectChange: show_add_note, x1: 50, y1: 50, x2: 150, y2: 150 });
 
-$('#ias_image img').imgAreaSelect({fadeSpeed: 400, handles: true, instance: true,
-  onSelectChange: function (img, selection) {
-                    $('#annotation_x1').val(selection.x1);
-                    $('#annotation_x2').val(selection.x2);
-                    $('#annotation_y1').val(selection.y1);
-                    $('#annotation_y2').val(selection.y2);
-                    $('#annotation_width').val(selection.width);
-                    $('#annotation_height').val(selection.height);
-                  }
-});
+function show_add_note (img, area) {
+  imgOffset = $('#img_note').offset();
+  form_left  = parseInt(imgOffset.left) + parseInt(area.x1);
+  form_top   = parseInt(imgOffset.top) + parseInt(area.y1) + parseInt(area.height)+5;
+
+
+  $('#noteform').css({ left: form_left + 'px', top: form_top + 'px'});
+  $('#noteform').show();
+  $('#noteform').css("z-index", 10000); 
+
+  $('#annotation_x1').val(area.x1);
+  $('#annotation_x2').val(area.x2);
+  $('#annotation_y1').val(area.y1);
+  $('#annotation_y2').val(area.y2);
+  $('#annotation_width').val(area.width);
+  $('#annotation_height').val(area.height);
+}
+
+imgOffset = $('#img_note').offset();
+form_left  = parseInt(imgOffset.left) + 50;
+form_top   = parseInt(imgOffset.top) + 155;
+
+$('#noteform').css({ left: form_left + 'px', top: form_top + 'px'});
+$('#noteform').show();
+$('#noteform').css("z-index", 10000); 
+
+$('#annotation_x1').val(50);
+$('#annotation_x2').val(150);
+$('#annotation_y1').val(50);
+$('#annotation_y2').val(150);
+$('#annotation_width').val(100);
+$('#annotation_height').val(100);

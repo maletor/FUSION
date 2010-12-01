@@ -1,5 +1,25 @@
-<%= notice %>
-
-<div class="result">
-
+<div class="grid_3">
+  <h3>Your Projects</h3>
+  <% @projects.each do |p| %>
+    <p><%= link_to p.name, p %></p>
+    <%= link_to "new project", new_project_path %>
+  <% end %>
 </div>
+<div class="grid_3">
+  <h3>Users</h3>
+  <% User.all.each do |u| %>
+    <%= link_to u.name, u %>
+  <% end %>
+  <p>
+    <%= link_to "new client", new_client_path %>
+    <%= link_to "new employee", new_employee_path %>
+  </p>
+</div>
+
+<div class="grid_6">
+  <h3>Messages</h3>
+  <p>
+    Here is all the messages that have been sent to you from a task.
+  </p>
+</div>
+

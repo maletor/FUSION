@@ -1,6 +1,9 @@
 class AnnotationsController < ApplicationController
-  respond_to :js
-  
+  def edit
+    @image = Image.find(params[:image_id])
+    @annotation = Annotation.find(params[:id])
+  end
+
   def index
     @annotations = Annotation.all
 
@@ -16,23 +19,22 @@ class AnnotationsController < ApplicationController
     @annotation = @image.annotations.build
   end
 
+  def update
+    @annotation = Annotation.find(params[:id])
+
+    flash[:notice] = 'Annotation updated' if @annotation.update_attributes(params[:annotation])
+  end
+
   def create
     @image = Image.find(params[:image_id])
     @annotation = @image.annotations.build(params[:annotation])
 
-    flash[:notice] = 'Annotation was successfully created.' if @annotation.save
-    respond_with(@annotation)
-    
+    flash[:notice] = 'Annotation created.' if @annotation.save
   end
 
   def destroy
     @annotation = Annotation.find(params[:id])
-
-    if @annotation.destroy
-      head :ok
-    else
-      render :nothing => true
-    end
+    flash[:notice] = 'Annotation destroyed.' if @annotation.destroy
   end
 end
 

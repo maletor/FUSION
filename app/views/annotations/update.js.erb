@@ -1,0 +1,3 @@
+$("#noteform").remove();
+$("#annotation_<%= @annotation.id %>").html("<%= escape_javascript render @annotation %>");
+$('#img_note').imgAreaSelect({ hide: true, disable: true });

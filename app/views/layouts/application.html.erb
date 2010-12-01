@@ -2,9 +2,9 @@
 <html>
   <head>
     <title>FUSION</title>
-    <%= stylesheet_link_tag "reset", "text", "960", "jquery-ui", 'imgareaselect-animated', "colorpicker", "application" %>
+    <%= stylesheet_link_tag "reset", "text", "960", "jquery-ui-1.8.6", "imgareaselect-animated", "application" %>
     <%= yield(:before_head) %>
-    <%= javascript_include_tag 'jquery-1.4.4.min', 'jquery-ui-1.8.6.min', 'jquery-imgareaselect-0.9.3.min', 'base64', 'canvas2image', "colorpicker", 'whiteboard', 'whiteboardui.jquery', 'rails', 'application' %>
+    <%= javascript_include_tag 'jquery-1.4.4.min', "jquery-ui-1.8.6.min", "jquery-imgareaselect-0.9.3.min", 'rails', 'application' %>
     <%= yield(:head) %>
     <%= favicon_link_tag %>
     <%= csrf_meta_tag %>
@@ -12,15 +12,26 @@
   <body>
     <div class="container_12">
       <div id="header" class="grid_12">
-        <% if logged_in? %>
-          Welcome <%= current_user.name %>, <%= link_to "Logout", logout_path %>
-        <% end %>
+        <div id="logo" class="grid_3 alpha">
+          <%= link_to (image_tag "cmonk.png", :height => 50), root_path %>
+        </div>
+        <div id="login" class="grid_9 omega">
+          <h1>PROD4ever</h1>
+          <% if logged_in? %>
+            <p>Welcome <%= current_user.name %>, <%= link_to "Logout", logout_path %></p>
+          <% end %>
+          <%= link_to "Dashboard", dashboard_path %>
+        </div>
       </div>
+
+      <div class="clear"></div>
 
       <%= yield %>
 
+      <div class="clear"></div>
+
       <div id="footer" class="grid_12">
-        Footer
+        129 Kingston Street, Second Floor  /  Boston, MA 02111 USA  / /  <%= mail_to "info@prod4ever.com", "info@prod4ever.com", :encode => :javascript %>  / /  (617) 426-0499
       </div>
     </div>
   </body>

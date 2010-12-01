@@ -1,3 +1,9 @@
-$('#canvas').hide();
-$('#ias_image').show();
-ias = $('#ias_image img').imgAreaSelect({ x1: <%= @annotation.x1 %>, y1: <%= @annotation.y1 %>, x2: <%= @annotation.x2 %>, y2: <%= @annotation.y2 %> });
+$('#noteform').remove();
+ias = $('#ias_image img').imgAreaSelect({ show: true, enable: true, fadeSpeed: 400, handles: false, resizable: false, movable: false, instance: true  });
+
+// If nothing is selected, use top left
+if (!ias.getSelection().width)
+  ias.setOptions({ x1: 0, y1: 0, x2: 0, y2: 0 });
+
+ias.animateSelection(<%= @annotation.x1 %>, <%= @annotation.y1 %>, <%= @annotation.x2 %>, <%= @annotation.y2 %>, 'slow');
+

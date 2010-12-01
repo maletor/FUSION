@@ -1,29 +1,34 @@
-<%= form_for([@image, @annotation], :remote => true) do |f| %>
-
-  <div class="field">
-    <%= f.hidden_field :x1 %>
-  </div>
-  <div class="field">
-    <%= f.hidden_field :x2 %>
-  </div>
-  <div class="field">
-    <%= f.hidden_field :y1 %>
-  </div>
-  <div class="field">
-    <%= f.hidden_field :y2 %>
-  </div>
-  <div class="field">
-    <%= f.hidden_field :width %>
-  </div>
-  <div class="field">
-    <%= f.hidden_field :height %>
-  </div>
-  <div class="field">
-    <%= f.label :text, "Note" %><br />
-    <%= f.text_field :text %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
-
+<div id="noteform">
+  <%= form_for([@image, @annotation], :remote => true) do |f| %>
+    <div class="field">
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+    </div>
+    <div class="field">
+      <%= f.hidden_field :x1 %>
+    </div>
+    <div class="field">
+      <%= f.hidden_field :x2 %>
+    </div>
+    <div class="field">
+      <%= f.hidden_field :y1 %>
+    </div>
+    <div class="field">
+      <%= f.hidden_field :y2 %>
+    </div>
+    <div class="field">
+      <%= f.hidden_field :width %>
+    </div>
+    <div class="field">
+      <%= f.hidden_field :height %>
+    </div>
+    <div class="field">
+      <%= f.label :note, "Note" %><br />
+      <%= f.text_field :note %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+      <%= button_to_function "Cancel", "$('#img_note').imgAreaSelect({ hide: true, disable:true }); $('#noteform').remove();" %>
+      
+    </div>
+  <% end %>
+</div>

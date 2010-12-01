@@ -1,4 +1,4 @@
-<%= form_for([:milestone, @task]) do |f| %>
+<%= form_for(@project.tasks.build) do |f| %>
   <% if @task.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
@@ -15,10 +15,7 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :complete %><br />
-    <%= f.check_box :complete %>
-  </div>
+  <%= f.hidden_field :task_id, :value => @task.id %>
   <div class="actions">
     <%= f.submit %>
   </div>

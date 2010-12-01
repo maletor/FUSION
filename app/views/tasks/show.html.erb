@@ -1,42 +1,38 @@
-<% content_for :head do %>
-  <%= stylesheet_link_tag 'imgareaselect-animated' %>
-  <%= javascript_include_tag 'jquery-imgareaselect-0.9.3.min' %>
-<% end %>
-
-<p id="notice"><%= notice %></p>
-<p>
-  <b>Name:</b>
-  <%= @task.name %>
-</p>
-
-<p>
-  <b>Complete:</b>
-  <%= @task.complete %>
-</p>
-
-<div id="annotations">
-<% @comments.each do |comment| %>
-  <%= comment.message %>
-  
-  <% comment.images.each do |image| %>
-    <%= div_for image do %>
-      <% unless image.new_record? %>
-        <%= image_tag image.attachment(:large) %>
-        Version: <%= image.version %>
-  <%= link_to "New Note", new_image_annotation_path(image), :remote => true %>
-  <%= link_to "New Drawing", new_image_drawing_path(image) %>
-        <div class="notes">
-  <% image.annotations.each do |annotation| %> 
-    <%= link_to annotation.text, image_annotation_path(image, annotation), :remote => true %>
-  <% end %>
+<div id="projects" class="grid_3">
+  <h2><%= link_to @project.name, @project %></h2>
+  <h4>Tasks</h4>
+  <p>Sort by: <%= link_to "due date", project_path(@project, :sort => "due") %> | <%= link_to "priority", project_path(@project, :sort => "priority") %> | <%= link_to "name", project_path(@project, :sort => "name") %></p>
+  <ul>
+    <% @project.tasks.each do |t| %>
+      <% unless t.new_record? %>
+        <span class="ui-icon ui-icon-carat-1-e"></span><li><%= link_to t.name, project_task_path(t.project, t) %> <%= link_to project_task_path(t.project, t), :method => :delete, :confirm => "Are you sure?" do %><span style="float:right" class="ui-icon ui-icon-close"></span><% end %></li>
       <% end %>
     <% end %>
-  <% end %>
+  </ul>
+  <%= render 'tasks/form', :locals => { :project => @project } %>
+</div>
+
+<div class="grid_9">
+
+  <ul id="aspects">
   
-<% end %>
-
-<%= render :partial => 'comments/form' %>
-
-<div class="result">
-
+    <li id="graphics">
+      <div class="title">Graphics</div>
+      <div class="info">
+        <%= render @images %>
+        <br />
+        <%= render "images/form" %>
+        <br />
+      </div>
+    </li>
+    <li id="graphics">
+      <div class="title">Messages</div>
+      <div class="info">
+        <%= render @comments %>
+        <br />
+        <%= render 'comments/form' %>
+        <br />
+      </div>
+    </li>    
+  </ul>
 </div>

@@ -12,8 +12,17 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-    @milestone = @project.milestones.build
-    @invitation = @project.invitations.build
+    @images = @project.images
+    @task = @project.tasks.build
+    @comments = @project.comments
+    
+    if params[:sort] = "priority"
+      @tasks = @project.tasks.order("priority desc") 
+    elsif params[:sort] = "name"
+      @tasks = @project.tasks.order("name asc") 
+    else
+      @tasks = @project.tasks.order("due desc") 
+    end
 
     respond_to do |format|
       format.html # show.html.erb

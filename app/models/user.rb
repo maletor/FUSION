@@ -1,9 +1,11 @@
 class User < ActiveRecord::Base
   has_one :card
   has_one :avatar
+  has_many :annotations
   has_many :comments
   accepts_nested_attributes_for :card
   accepts_nested_attributes_for :avatar
+  has_many :approved_images, :class_name => "Image", :foreign_key => "approver_id"
 
   ## Niftily-generated authentication code below.
   # new columns need to be added here to be writable through mass assignment

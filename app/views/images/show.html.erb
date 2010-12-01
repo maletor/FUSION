@@ -1,42 +1,19 @@
-
-<div id="tools"> 
-  <%= link_to((image_tag "annotate.png", :height => 35), new_image_annotation_path(@image), :remote => true) %>
-  <%= link_to("Annotate", new_image_annotation_path(@image), :remote => true, :class => 'padding_right') %>
-  <%= link_to((image_tag "pencil.gif", :height => 35, :class => 'border_left'), new_image_drawing_path(@image), :remote => true) %>
-  <%= link_to("Draw", new_image_drawing_path(@image), :remote => true) %>
-</div> 
-<canvas id="canvas"></canvas> 
-
-<% content_for :before_head do %>
-  <%= javascript_tag do %>
-    source = '<%= @image.attachment(:large) %>';
-  <% end %>
-<% end %>
-
-<div id="sidebar">
-  <h2><%= "U2" %></h2>
+<div id="projects" class="grid_3">
+  <h2><%= link_to @image.project.name, project_path(@image.project) %></h2>
   <h4>version <%= @image.version %></h4>
+  <div id="approval">
+    <%= render 'approval' %>
+  </div>
+  <p><%= link_to("New annotation", new_image_annotation_path(@image), :remote => true) %> </p>
+  <%# link_to((image_tag "pencil.gif", :height => 35, :class => 'border_left'), new_image_drawing_path(@image), :remote => true) %>
+  <%# link_to("Draw", new_image_drawing_path(@image), :remote => true) %>
 
-    <div id="annotation_list">
-      <% @image.annotations.each do |a| %>
-        <% unless a.new_record? %>
-          <p><%= link_to annotation_text(a), image_annotation_path(@image.id, a.id), :remote => true %></p>
-        <% end %>
-      <% end %>
-    </div>
-
-    <div id="drawing_list">
-      <% @image.drawings.each do |d| %>
-        <% unless d.new_record? %>
-          <p><%= link_to drawing_text(d), image_drawing_path(@image.id, d.id), :remote => true %></p>
-        <% end %>
-      <% end %>
-    </div>
-  
-  <div id="new_annotation"></div>
-
+  <div id="annotation_list">
+    <%= render @annotations %>
+  </div>
 </div>
 
-<div id="ias_image">
-  <%= image_tag @image.attachment(:large) %>
+<div id="ias_image" class="grid_9">
+  <%= image_tag @image.attachment(:large), :width => 700, :id => 'img_note' %>
 </div>
+
