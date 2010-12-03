@@ -1,4 +1,3 @@
-<div id="header"></div>
 <div id="body">
   <div class="container_12">
     <p class="grid_6 prefix_3 suffix_3"><%= image_tag "fusion.png", :width => "460" %></p>
@@ -29,7 +28,7 @@
       <div class="grid_6 push_3">
         <%= text_field_tag :login, params[:login], :value => "Email", :class => "ui-state-default ui-corner-all" %>
         <%= password_field_tag :password, "password", :class => "ui-state-default ui-corner-all" %>
-     <%= submit_tag "Log In", :class => "ui-button ui-state-default ui-corner-all ui-button-text-only", :id => "button", :role => "button", "aria-disabled" => false %>
+        <%= submit_tag "Log In", :style => "float:right;", :class => "ui-button ui-state-default ui-corner-all ui-button-text-only", :id => "button", :role => "button", "aria-disabled" => false %>
     </div>
 
     <% end %>
@@ -37,7 +36,3 @@
     <!-- <span id="forgot" class="grid_6 push_2"><%# link_to "Forgot password?", root_path %></span> -->
   </div>
 </div>
-<div id="footer">
-  <%= link_to image_tag("prod_logo_inverted.gif", :id => 'prod-footer'), "http://prod4ever.com" %>
-</div>
-

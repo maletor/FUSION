@@ -130,9 +130,11 @@ a:hover, a:active {
   font-size: 16px;
 }
 
-input.ui-button {
-  margin-left: 0;
-  margin-right: 0;
+#body input {
+
+  padding: 0.4em 1em;
+  font-size: 16px;
+  width: 120px;
 }
 
 #color_select {
