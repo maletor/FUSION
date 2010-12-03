@@ -7,7 +7,8 @@
  */
 
 body { 
-  background: #fff;
+  background: url("/images/atom-clear.png") no-repeat;
+  background-position: -100px -100px;
   color: #000;
 }
 
@@ -248,9 +249,6 @@ a:hover, a:active {
   margin-right: 20px;
 }
   
-#header img {
-  margin-right: 50px;
-}
 
 #header p {
   display: inline;
@@ -336,4 +334,9 @@ input[type=submit] {
 
 .users {
   margin:20px 0;
+}
+
+#navigation form {
+  float: left;
+  margin-right: 10px;
 }

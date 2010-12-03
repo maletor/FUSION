@@ -13,13 +13,18 @@
     <div class="container_12">
       <div id="header" class="grid_12">
         <div id="logo" class="grid_3 alpha">
-          <%= link_to (image_tag "cmonk.png", :height => 50), root_path %>
+          <%= link_to root_path do %><%= image_tag "logotype.png", :width => "220" %><% end %>
         </div>
-        <div id="login" class="grid_9 omega">
-          <h1>PROD4ever</h1>
+        <div id="login" class="grid_3">
+          <%= link_to root_path do %><%= image_tag "atom.png", :height => 52 %><% end %>
+        </div>
+        <div class="grid_6 omega">
           <% if logged_in? %>
-            <p>Welcome <%= link_to current_user.name, dashboard_path %>, <%= link_to "Logout", logout_path %></p>
+            <div id="navigation" style="float:left;">
+              <%= button_to "Dashboard", root_path %><%= button_to "Help", root_path %>
+            </div>
           <% end %>
+          <%= link_to root_path do %><%= image_tag "cmonk.png", :height => 52, :style => "float:right" %><% end %>
         </div>
       </div>
 
