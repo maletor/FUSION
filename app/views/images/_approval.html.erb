@@ -1,14 +1,1 @@
-<p>
-  <% if @image.approved? %>
-    <span class="ui-state-default ui-corner-all ui-icon ui-icon-circle-check"></span> by <%= @image.approver.name %> at <%= @image.approved_at.to_s(:short) %>
-<% else %>
-  <span class="ui-state-default ui-corner-all ui-icon ui-icon-circle-close"></span> pending approval
-<% end %>
-<%= form_for @image, :url => project_image_path(@image.project, @image), :method => :put, :remote => true do |f| %>
-  <%= f.label :approved %>
-  <%= f.check_box :approved %>
 
-  <%= f.hidden_field :approver_id, :value => current_user.id %>
-  <%= f.submit %>
-<% end %>
-</p>
