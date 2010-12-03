@@ -1,27 +1,20 @@
-<div id="projects" class="grid_3">
-  <h2><%= @project.name %></h2>
-  <h4>Tasks</h4>
-  <p>Sort by: <%= link_to "due date", project_path(@project, :sort => "due") %> | <%= link_to "priority", project_path(@project, :sort => "priority") %> | <%= link_to "name", project_path(@project, :sort => "name") %></p>
-  <ul>
-    <% @project.tasks.each do |t| %>
-      <% unless t.new_record? %>
-        <span class="ui-icon ui-icon-carat-1-e"></span><li><%= link_to t.name, project_task_path(t.project, t) %> <%= link_to project_task_path(t.project, t), :method => :delete, :confirm => "Are you sure?" do %><span style="float:right" class="ui-icon ui-icon-close"></span><% end %></li>
-      <% end %>
-    <% end %>
-  </ul>
-  <%= render 'tasks/form', :locals => { :project => @project } %>
+<div class="grid_3">
+  <h4 class="title ui-state-default ui-corner-all">
+    <%= @project.name %>
+  </h4>
+</div>
+<div class="grid_3">
+  <h4 class="title ui-state-default ui-corner-all">Members</h4>
+    <h6 style="float:left;">Employees</h6>
+  <%= render @project.users.where(:type => "Employee") %>
+    <h6 style="float:left;">Clients</h6>
+  <%= render @project.users.where(:type => "Client") %>
 </div>
 
-<div class="grid_9">
-
-  <ul id="aspects">
-  
-    <li id="graphics">
-      <div class="title">Graphics</div>
-      <div class="info">
-        <%= render @images %>
-        <br />
-      </div>
-    </li>
-  </ul>
+<div class="grid_6">
+  <h4 class="title ui-state-default ui-corner-all">Milestones</h4> 
+  <div class="info">
+    <%= render @milestones %>
+    <%= render 'milestones/form' %>
+  </div>
 </div>

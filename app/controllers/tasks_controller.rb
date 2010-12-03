@@ -23,31 +23,12 @@ class TasksController < ApplicationController
     @comment = @task.comments.build
     @comments = @task.comments
     
-    if params[:sort] = "priority"
-      @tasks = @project.tasks.order("priority desc") 
-    elsif params[:sort] = "name"
-      @tasks = @project.tasks.order("name asc") 
-    else
-      @tasks = @project.tasks.order("due desc") 
-    end
-
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @task }
-    end
   end
 
   # GET /tasks/new
   # GET /tasks/new.xml
   def new
-    @milestone = Milestone.find(params[:milestone_id])
-    @task = @milestone.tasks.build
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @task }
-    end
+    @task = Task.new
   end
 
   # GET /tasks/1/edit
@@ -61,9 +42,7 @@ class TasksController < ApplicationController
     @task = Task.new(params[:task])
 
     if @task.save
-      redirect_to(project_task_path(@task.project, @task))
-    else
-      render :template => "projects/show" 
+      redirect_to(project_task_path(@task.project.id, @task.id))
     end
   end
 

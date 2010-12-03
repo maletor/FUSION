@@ -1,0 +1,12 @@
+<% unless milestone.new_record? %>
+  <div class="milestone">
+    <%= milestone.name %><span style="color:#666"> <%= milestone.deadline.to_s(:short) %></span>
+  </div>
+  <div class="tasks">
+    <ul>
+      <%= render milestone.tasks %>
+    </ul>
+  </div>
+
+  <br />
+<% end %>

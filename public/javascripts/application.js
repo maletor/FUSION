@@ -1,14 +1,33 @@
 $(document).ready(function() {
 
-  if ($('#aspects').length > 0) {
-    $('#aspects li').each(function(){
-      $(this).find('.title').click(function(){
-        $(this).parent().find('.info').slideToggle();
+      $('.title').click(function(){
+        $(this).next('.info').slideToggle();
       });
-    });
-  }
+
+
+
+$('.ui-state-default').hover( 
+  function () {
+    $(this).addClass("ui-state-hover");
+  },
+  function () {
+    $(this).removeClass("ui-state-hover");    
+  });
+
+  $('input[type=submit]').button();
 
 });
+
+  function remove_fields(link) {
+    $(link).prev("input[type=hidden]").val("1");
+    $(link).closest(".fields").hide();
+  }
+
+  function add_fields(link, association, content) {
+    var new_id = new Date().getTime();
+    var regexp = new RegExp("new_" + association, "g")
+    $(link).parent().after(content.replace(regexp, new_id));
+  }
 
 $.extend($.imgAreaSelect, {
   animate: function (fx) {

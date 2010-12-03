@@ -4,25 +4,27 @@
       <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
 
       <ul>
-      <% @project.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @project.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
- 
-  <div class="field">
-    <%= f.label :deadline %><br />
-    <%= f.datetime_select :deadline %>
-  </div>
+
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :progress %><br />
-    <%= f.text_field :progress %>
+
+  <div class="users">
+    <%= f.label :user_ids, "Users" %><br />
+    <% User.all.each do |user| %>
+      <div>
+        <%= check_box_tag "project[user_ids][]", user.id, @project.users.include?(user) %>
+        <%= user.name %>
+      </div>
+    <% end %>
   </div>
   <div class="actions">
     <%= f.submit %>

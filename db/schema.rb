@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101201000321) do
+ActiveRecord::Schema.define(:version => 20101201203124) do
 
   create_table "annotations", :force => true do |t|
     t.integer  "image_id"
@@ -63,6 +63,11 @@ ActiveRecord::Schema.define(:version => 20101201000321) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "project_id"
+  end
+
+  create_table "comments_users", :id => false, :force => true do |t|
+    t.integer "comment_id"
+    t.integer "user_id"
   end
 
   create_table "drawings", :force => true do |t|
@@ -118,6 +123,11 @@ ActiveRecord::Schema.define(:version => 20101201000321) do
     t.integer  "client_id"
     t.datetime "deadline"
     t.integer  "task_id"
+  end
+
+  create_table "projects_users", :id => false, :force => true do |t|
+    t.integer "project_id"
+    t.integer "user_id"
   end
 
   create_table "tasks", :force => true do |t|

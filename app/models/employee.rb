@@ -1,7 +1,6 @@
 class Employee < User
   attr_accessible :name, :website
 
-  has_many :projects
-
+  gravtastic
   validates_presence_of :name
 end

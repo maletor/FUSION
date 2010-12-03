@@ -13,9 +13,10 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     @images = @project.images
-    @task = @project.tasks.build
     @comments = @project.comments
-    
+    @milestone = @project.milestones.build
+    @milestones = @project.milestones
+
     if params[:sort] = "priority"
       @tasks = @project.tasks.order("priority desc") 
     elsif params[:sort] = "name"

@@ -1,4 +1,4 @@
-<%= form_for([@task, @comment], :html => { :multipart => true }) do |f| %>
+<%= form_for([@task, @comment]) do |f| %>
   <% if @comment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
@@ -15,11 +15,16 @@
     <%= f.label :message %><br />
     <%= f.text_field :message %>
   </div>
-  <%= f.hidden_field :user_id, :value => current_user.id %>
+
+    <%= f.hidden_field :user_id, :value => current_user.id %>
 
   <div id="users">
-    <% User.all.each do |u| %>
-    <% end %>
+  <% User.all.each do |user| %>
+    <div>
+      <%= check_box_tag "comment[recipient_ids][]", user.id, @comment.recipients.include?(user) %>
+      <%= user.name %>
+    </div>
+  <% end %>
   </div>
 
   <div class="actions">

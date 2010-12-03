@@ -152,12 +152,12 @@ input.ui-button {
   width: 30px;
 }  
 
-#projects li{
-  border-left: 10px solid #ea5200;
-  padding-left:10px;
+.tasks li{
+
+  padding:10px;
   margin-bottom: 10px;
   list-style-type: none;
-  margin-left:15px;
+  margin-left:0;
 }
 
 #milestones{
@@ -196,26 +196,21 @@ input.ui-button {
 
 
 #aspects li {
-    border-bottom: 2px solid #666666;
     margin-left: 0;
-    padding: 10px 0 5px 15px;
     font-size: 16px;
 }
 
-#aspects li .title {
+.title {
+  font-size: 16px;
+  margin-bottom: 20px;
+  padding: 4px;
+  padding-left: 8px;
   cursor: pointer;
-}
-
-#aspects li:first-child {
-    padding-top: 0;
-}
-
-#aspects .title{
     text-transform: uppercase;
+  
 }
 
 #aspects .info p {
-  display: inline;
 }
 
 #aspects .info{
@@ -224,13 +219,9 @@ input.ui-button {
 
 #aspects .info img {
   padding: 20px;
-  border: 1px solid #666;
+  margin-right: 20px;
 }
 
-#aspects .info img:hover {
-  padding: 20px;
-  border: 1px solid magenta;
-}
 
 #new_status{
     
@@ -268,9 +259,9 @@ input.ui-button {
   margin-bottom: 0;
 }
 
-#projects li.selected, #projects li:hover {
+.tasks li.selected, .tasks li:hover {
   cursor: pointer;
-  background: #ccc;
+  background: #f0f0f0;
 }
 
 .note {
@@ -304,5 +295,43 @@ input.ui-button {
 
 span.ui-icon {
 float: left;
-margin-right: 4px;
+margin: 0 4px;
+}
+
+input[type=submit] {
+  margin-bottom: 10px;
+}
+
+.field {
+  margin-bottom: 10px;
+}
+
+.gravatar {
+  margin-right: 10px;
+  padding: 4px;
+  border: 1px #ccc solid;
+}
+
+.due {
+  padding-left: 10px;
+  font-style:italic;
+  color: #666;
+}
+
+.tasks {
+ margin-left: 20px;
+} 
+
+.milestone {
+  font-weight: bold;
+  font-size: 14px;
+  padding-right: 10px;
+}
+
+.milestone span:before {
+  content: " - ";
+}
+
+.users {
+  margin:20px 0;
 }

@@ -10,6 +10,11 @@
   <%= @client.website %>
 </p>
 
+<% @client.projects.each do |p| %>
+  <%= p.name %>
+
+<% end %> 
+
 <%= render :partial => 'projects/form' %>
 
 <%= link_to 'Edit', edit_client_path(@client) %> |

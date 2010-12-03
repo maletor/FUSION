@@ -1,0 +1,5 @@
+<div class="grid_3 alpha omega" style="margin-bottom:20px;">
+  <%= image_tag employee.gravatar_url, :width => 40, :class => "gravatar" %><%= link_to employee.name, employee %><%= link_to employee, :method => :delete, :confim => "Are you sure?" do %><span style="float:right" title="Delete" class="ui-icon ui-icon-minusthick ui-state-default ui-corner-all"></span><% end %>
+  <%= link_to edit_employee_path(employee) do %><span style="float:right" title="Delete" class="ui-icon ui-icon-pencil ui-state-default ui-corner-all"></span><% end %>
+</div>
+<div class="clear"></div>

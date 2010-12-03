@@ -30,11 +30,6 @@ class ClientsController < ApplicationController
     @card = @client.build_card
     @website = @card.websites.build
     @phone_number = @card.phone_numbers.build
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @client }
-    end
   end
 
   # GET /clients/1/edit

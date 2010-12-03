@@ -33,3 +33,4 @@ gem 'nifty-generators'
 gem 'vestal_versions', :git => 'git://github.com/lailsonbm/vestal_versions' # No Rails 3 support from GitHub user laserlemon
 gem 'paperclip'
 gem 'cancan'
+gem 'gravtastic'

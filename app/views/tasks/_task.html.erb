@@ -1,0 +1,8 @@
+<% unless task.new_record? %>
+  <li>
+    <%= link_to task.name, project_task_path(task.project, task) %>
+    <%= link_to project_task_path(task.project, task), :method => :delete, :confirm => "Are you sure?" do %>
+      <span style="float:right" title="Mark completed" class="ui-state-default ui-corner-all ui-icon ui-icon-minusthick"></span><span style="float:right" title="Delete" class="ui-state-default ui-corner-all ui-icon ui-icon-pencil"></span>
+    <% end %>
+  </li>
+<% end %>

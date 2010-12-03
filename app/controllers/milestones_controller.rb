@@ -42,7 +42,7 @@ class MilestonesController < ApplicationController
   def create
     @project = Project.find(params[:project_id])
     @milestone = @project.milestones.create(params[:milestone])
-    redirect_to project_milestone_path(@milestone)
+    redirect_to @project
   end
 
   # PUT /milestones/1

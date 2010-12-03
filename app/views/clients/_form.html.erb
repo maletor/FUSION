@@ -1,5 +1,3 @@
-<p>Already have an account? <%= link_to "Log in", login_path %>.</p>
-
 <%= form_for @client do |f| %>
    <% if @client.errors.any? %>
     <div id="error_explanation">
@@ -17,28 +15,16 @@
     <%= f.text_field :name %>
   </div>
   <%= f.fields_for @card do |card_form| %>
-    <div class="field">
-      <%= card_form.label :public %>
-      <%= card_form.check_box :public %>
-    </div>
     <%= card_form.fields_for @website do |website_form| %>
       <div class="field">
-        <%= website_form.label :url %>
+        <%= website_form.label :url, "Website" %><br />
         <%= website_form.text_field :url %>
-      </div>
-      <div class="field">
-        <%= website_form.label :type %>
-        <%= website_form.select :type, Website::TYPES %>
       </div>
     <% end %>
     <%= card_form.fields_for @phone_number do |phone_form| %>
       <div class="field">
-        <%= phone_form.label :number %>
+        <%= phone_form.label :number %><br />
         <%= phone_form.phone_field :number %>
-      </div>
-      <div class="field">
-        <%= phone_form.label :type %>
-        <%= phone_form.select :type, PhoneNumber::TYPES %>
       </div>
     <% end %>
 

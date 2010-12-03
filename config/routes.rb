@@ -28,6 +28,8 @@ Fusion::Application.routes.draw do
     resources :tasks
   end
 
+  resources :comments
+  
   resources :tasks do 
     resources :comments
   end
