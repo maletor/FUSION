@@ -13,7 +13,6 @@ class ImagesController < ApplicationController
 
   def update
     @image = Image.find(params[:id])
-    @image.approved_at = Time.now if params[:image][:approved_by]
 
     flash[:notice] = "Success" if @image.update_attributes(params[:image])
   end
