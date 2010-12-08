@@ -56,12 +56,12 @@ a img {
 }
 
 a {
-  color: #669801;
+  color: #0166FF;
   text-decoration: none;
 }
 
 a:hover, a:active {
-  color: #0166FF;
+  color: #FD0132;
 }
 
 .ui-state-error p {
