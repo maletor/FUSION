@@ -1,21 +1,23 @@
-<p id="notice"><%= notice %></p>
+<div class="grid_12">
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @client.name %>
-</p>
+  <p>
+    <b>Name:</b>
+    <%= @client.name %>
+  </p>
 
-<p>
-  <b>Website:</b>
-  <%= @client.website %>
-</p>
+  <p>
+    <b>Website:</b>
+    <%= @client.website %>
+  </p>
 
-<% @client.projects.each do |p| %>
-  <%= p.name %>
+  <b>Projects</b>
+  <p>
+    <% @client.projects.each do |p| %>
+      <%= p.name %><br />
+    <% end %> 
+  </p>
 
-<% end %> 
-
-<%= render :partial => 'projects/form' %>
-
-<%= link_to 'Edit', edit_client_path(@client) %> |
-<%= link_to 'Back', clients_path %>
+  <%= link_to 'Edit', edit_client_path(@client) %> |
+  <%= link_to 'Back', clients_path %>
+</div>

@@ -7,9 +7,9 @@
  */
 
 body { 
-  background: url("/images/atom-clear.png") no-repeat;
+  background: #000 url("/images/atom-clear.png") no-repeat;
   background-position: -100px -100px;
-  color: #000;
+  color: #fff;
 }
 
 #remember, #forgot {
@@ -25,7 +25,7 @@ body {
 }
 
 #forgot a:hover, #forgot a:active {
-  color: #000;
+  color: #0166FF;
 }
 
 #prod-footer {
@@ -56,12 +56,12 @@ a img {
 }
 
 a {
-  color: magenta;
+  color: #669801;
   text-decoration: none;
 }
 
 a:hover, a:active {
-  color: black;
+  color: #0166FF;
 }
 
 .ui-state-error p {
@@ -260,8 +260,7 @@ a:hover, a:active {
 }
 
 .tasks li.selected, .tasks li:hover {
-  cursor: pointer;
-  background: #f0f0f0;
+  background: #333;
 }
 
 .note {

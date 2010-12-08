@@ -1,6 +1,7 @@
-<h1>Editing milestone</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @milestone %> |
-<%= link_to 'Back', milestones_path %>
+<div class="grid_12">
+  <h1>Editing milestone</h1>
+  <p>
+    <%= link_to 'Delete Milestone', @milestone, :method => :delete %>
+  </p>
+  <%= render 'form' %>
+</div>

@@ -17,6 +17,13 @@
     <%= f.text_field :name %>
   </div>
 
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+
+
+
   <div class="users">
     <%= f.label :user_ids, "Users" %><br />
     <% User.all.each do |user| %>

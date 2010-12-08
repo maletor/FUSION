@@ -2,19 +2,36 @@
   <h4 class="title ui-state-default ui-corner-all">
     <%= @project.name %>
   </h4>
+  <p>
+    <%= @project.description %>
+  </p>
+    <p>
+    <%= link_to "Edit project", edit_project_path(@project) %>
+  </p>
 </div>
 <div class="grid_3">
   <h4 class="title ui-state-default ui-corner-all">Members</h4>
-    <h6 style="float:left;">Employees</h6>
-  <%= render @project.users.where(:type => "Employee") %>
-    <h6 style="float:left;">Clients</h6>
-  <%= render @project.users.where(:type => "Client") %>
+  <h6 style="float:left;">Employees</h6>
+  <% @project.users.where(:type => "Employee").each do |employee| %>
+    <div class="grid_3 alpha omega" style="margin-bottom:20px;">
+      <%= image_tag employee.gravatar_url, :width => 40, :class => "gravatar" %><%= link_to employee.name, employee %>
+    </div>
+    <div class="clear"></div>
+  <% end %>
+
+  <h6 style="float:left;">Clients</h6>
+  <% @project.users.where(:type => "Client").each do |client| %>
+    <div class="grid_3 alpha omega" style="margin-bottom:20px;">
+      <%= image_tag client.gravatar_url, :width => 40, :class => "gravatar" %><%= link_to client.name, client %>
+    </div>
+    <div class="clear"></div>
+  <% end %>
 </div>
 
 <div class="grid_6">
   <h4 class="title ui-state-default ui-corner-all">Milestones</h4> 
   <div class="info">
     <%= render @milestones %>
-    <%= render 'milestones/form' %>
+    <%= link_to "New Milestone", new_project_milestone_path(@project) %>
   </div>
 </div>

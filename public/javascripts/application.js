@@ -1,41 +1,42 @@
 $(document).ready(function() {
 
-      $('.title').click(function(){
-        $(this).next('.info').slideToggle();
-      });
-
-
-
-$('.ui-state-default').hover( 
-  function () {
-    $(this).addClass("ui-state-hover");
-  },
-  function () {
-    $(this).removeClass("ui-state-hover");    
+  $('.title').click(function(){
+    $(this).next('.info').slideToggle();
   });
+
+
+  $('h3.ui-state-default').addClass("ui-state-hover");
+
+  $('h3.ui-state-default').hover( 
+    function () {
+      $(this).removeClass("ui-state-hover");    
+    },
+    function () {
+      $(this).addClass("ui-state-hover");
+    });
 
   $('input[type=submit]').button();
 
 });
 
-  function remove_fields(link) {
-    $(link).prev("input[type=hidden]").val("1");
-    $(link).closest(".fields").hide();
-  }
+function remove_fields(link) {
+  $(link).prev("input[type=hidden]").val("1");
+  $(link).closest(".fields").hide();
+}
 
-  function add_fields(link, association, content) {
-    var new_id = new Date().getTime();
-    var regexp = new RegExp("new_" + association, "g")
+function add_fields(link, association, content) {
+  var new_id = new Date().getTime();
+  var regexp = new RegExp("new_" + association, "g")
     $(link).parent().after(content.replace(regexp, new_id));
-  }
+}
 
 $.extend($.imgAreaSelect, {
   animate: function (fx) {
              var start = fx.elem.start, end = fx.elem.end, now = fx.now,
-curX1 = Math.round(start.x1 + (end.x1 - start.x1) * now),
-curY1 = Math.round(start.y1 + (end.y1 - start.y1) * now),
-curX2 = Math.round(start.x2 + (end.x2 - start.x2) * now),
-curY2 = Math.round(start.y2 + (end.y2 - start.y2) * now);
+  curX1 = Math.round(start.x1 + (end.x1 - start.x1) * now),
+  curY1 = Math.round(start.y1 + (end.y1 - start.y1) * now),
+  curX2 = Math.round(start.x2 + (end.x2 - start.x2) * now),
+  curY2 = Math.round(start.y2 + (end.y2 - start.y2) * now);
 fx.elem.ias.setSelection(curX1, curY1, curX2, curY2);
 fx.elem.ias.update();
            },

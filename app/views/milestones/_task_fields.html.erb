@@ -1,0 +1,7 @@
+<div class="fields">
+  <%= f.label :name %><br />
+  <%= f.text_field :name %>
+  <%= f.datetime_select :due %>
+  <%= link_to_remove_fields "Remove Task", f %>
+  <%= f.hidden_field :project_id , :value => @milestone.project.id %>
+</div>

@@ -24,7 +24,7 @@
 <div class="grid_6">
   <h3 class="title ui-state-default ui-corner-all">News Feed</h3>
   <div class="info">
-    <% current_user.comments.each do |c| %>
+    <% current_user.comments.order("created_at desc").each do |c| %>
       <p>
         <%= render c %>
       </p>

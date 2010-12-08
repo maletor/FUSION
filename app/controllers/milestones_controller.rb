@@ -24,7 +24,8 @@ class MilestonesController < ApplicationController
   # GET /milestones/new
   # GET /milestones/new.xml
   def new
-    @milestone = Milestone.new
+    @project = Project.find(params[:project_id])
+    @milestone = @project.milestones.build
 
     respond_to do |format|
       format.html # new.html.erb
