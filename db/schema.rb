@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101207174006) do
+ActiveRecord::Schema.define(:version => 20101209090335) do
 
   create_table "annotations", :force => true do |t|
     t.integer  "image_id"
@@ -89,6 +89,9 @@ ActiveRecord::Schema.define(:version => 20101207174006) do
     t.boolean  "approved",                :default => false
     t.integer  "approver_id"
     t.datetime "approved_at"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "invitations", :force => true do |t|

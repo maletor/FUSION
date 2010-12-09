@@ -8,6 +8,8 @@
     <% end %> 
   </p>
 
+  <% if can? :edit, @employee %>
   <%= link_to 'Edit', edit_employee_path(@employee) %>
+<% end %>
 </div>
 

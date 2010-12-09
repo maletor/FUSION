@@ -13,7 +13,7 @@ class ImagesController < ApplicationController
 
   def update
     @image = Image.find(params[:id])
-
+    @image.approved_at = Time.zone.now
     flash[:notice] = "Success" if @image.update_attributes(params[:image])
   end
 
@@ -21,7 +21,7 @@ class ImagesController < ApplicationController
     @image = Image.new(params[:image])
 
     if @image.save
-      redirect_to(project_path(params[:image][:project_id]), :notice => 'Employee was successfully created.') 
+      redirect_to([@image.project, @image]) 
     else
       render :action => "new"
     end

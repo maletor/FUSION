@@ -1,3 +1,8 @@
 <% unless image.new_record? %>
-  <%= link_to(image_tag(image.attachment(:small), :height => 100, :class => "graphic ui-state-default ui-corner-all", :style => "background:none"), project_image_path(image.project, image)) %>
+  <div class="whole_graphic">
+    <p>
+      <span><%= link_to image.user.name, image.user %> </span> <small style="color: #666;font-size:12px;"> - <%= time_ago_in_words image.updated_at %> ago</small>
+    </p>
+    <%= link_to(image_tag(image.attachment(:small), :height => 100, :class => "graphic ui-state-default ui-corner-all", :style => "background:none"), project_image_path(image.project, image)) %>
+  </div>
 <% end %>

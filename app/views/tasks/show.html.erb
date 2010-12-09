@@ -9,6 +9,7 @@
         <div style="margin-bottom:20px;">
           <%= render @images %>
         </div>
+        <div class="clear"></div>
         <br />
         <%= render "images/form" %>
         <br />
@@ -18,9 +19,7 @@
       <h3 class="title ui-state-default ui-corner-all">Messages</h3>
       <div class="info">
         <%= render @comments %>
-        <hr />
         <%= render 'comments/form' %>
-        <br />
       </div>
     </li>    
   </ul>

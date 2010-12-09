@@ -2,6 +2,7 @@
   <%= f.hidden_field :project_id, :value => params[:project_id] %>
 
     <%= f.hidden_field :task_id, :value => params[:id] %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
 
   <p>
     <%= f.file_field :attachment %>

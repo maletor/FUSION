@@ -5,6 +5,7 @@ class Image < ActiveRecord::Base
     :url => "/assets/images/:id/:basename.:extension"
     
 
+  belongs_to :user
   has_many :annotations
   has_many :drawings
   belongs_to :comment

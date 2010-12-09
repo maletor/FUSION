@@ -354,3 +354,16 @@ input[type=submit] {
 .tasks ul {
   margin-bottom: 0;
 }
+
+.whole_graphic:first-child {
+  margin-left: 0;
+}
+.whole_graphic {
+  margin-bottom: 10px;
+  margin-left: 40px;
+  float: left;
+}
+
+#news .whole_graphic {
+  margin-left: 0;
+}

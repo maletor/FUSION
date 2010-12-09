@@ -9,8 +9,17 @@ class Ability
         comment.user_id == user.id
       end
 
+      can :manage, Image do |image|
+        image.user_id == user.id
+      end
+
+      can :manage, Annotation do |annotation|
+        annotation.user_id == user.id
+      end
+
       if user.type == "Client"
         can :read, :all
+        can :read, Employee
         can :create, Comment
         can :create, Image
         can :create, Annotation

@@ -1,6 +1,10 @@
 <% unless comment.new_record? %>
+  <div class="clear"></div>
   <span><%= link_to comment.user.name, comment.user %> </span> <%= comment.message %><br /><small style="color: #666;font-size:12px;"><%= time_ago_in_words comment.updated_at %> ago</small>
+  <% if can? :manage, comment %>
   <%= link_to comment, :method => :delete, :confim => "Are you sure?" do %><span style="float:right" title="Delete" class="ui-icon ui-icon-close ui-state-default ui-corner-all"></span><% end %><%= link_to edit_comment_path(comment) do %><span style="float:right" title="Edit" class="ui-icon ui-icon-pencil ui-state-default ui-corner-all"></span><% end %>
+<% end %>
+<br />
+<hr/>
 <% end %> 
 
-<br />

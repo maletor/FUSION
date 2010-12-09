@@ -1,6 +1,11 @@
 <%= div_for (annotation) do %>
-  <p style="padding: 10px;border: 1px dashed #666;>
+  <p style="padding: 10px;border: 1px dashed #666;">
     <%= link_to annotation.user.name %><span style="color:#666"> - <%= time_ago_in_words annotation.updated_at %> ago</span><br/><%= link_to annotation_text(annotation), image_annotation_path(annotation.image, annotation), :remote => true %><br />
+  <% if can? :manage, annotation %>
+    <%= link_to image_annotation_path(annotation.image, annotation), :remote => true, :method => :delete, :confim => "Are you sure?" do %><span style="float:right" title="Delete" class="ui-icon ui-icon-close ui-state-default ui-corner-all"></span><% end %><%= link_to edit_image_annotation_path(annotation.image, annotation), :remote => true do %><span style="float:right" title="Edit" class="ui-icon ui-icon-pencil ui-state-default ui-corner-all"></span><% end %><% end %>
+
   </p>
 <% end %>
+
+
 

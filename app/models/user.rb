@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_one :avatar
   has_many :annotations
   has_many :comments
+  has_many :images
   accepts_nested_attributes_for :card
   accepts_nested_attributes_for :avatar
   has_many :approved_images, :class_name => "Image", :foreign_key => "approver_id"

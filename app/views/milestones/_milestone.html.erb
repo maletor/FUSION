@@ -1,7 +1,7 @@
 <% unless milestone.new_record? %>
   <div style="padding:10px;border:1px dashed #<%= milestone_color(milestone) %>">
     <div class="milestone">
-      <%= link_to milestone.name, edit_project_milestone_path(milestone.project, milestone) %><span style="color:#666"> <%= milestone.deadline.to_s(:short) %></span>
+      <% if can? :create, Milestone %><%= link_to milestone.name, edit_project_milestone_path(milestone.project, milestone) %><% else %><%= milestone.name %><% end %><span style="color:#665"> <%= milestone.deadline.to_s(:short) %></span>
     </div>
     <div class="tasks">
       <ul>
