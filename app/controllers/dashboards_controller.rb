@@ -4,6 +4,7 @@ class DashboardsController < ApplicationController
   def show
     @projects = Project.all
     @invitation = Invitation.new
+    @comments = Comment.all
     
   end
 end

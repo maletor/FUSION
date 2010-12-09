@@ -3,26 +3,20 @@ class Ability
 
   def initialize(user)
     if user
+      can :manage, :all if user.type == "Employee"
 
-      if user.type == "Employee"
-        can :manage, :all
-      else
+      can :manage, Comment do |comment|
+        comment.user_id == user.id
+      end
+
+      if user.type == "Client"
         can :read, :all
-      end
-
-      can :update, Comment do |comment|
-        comment.user_id == user.id
-      end
-
-      can :destroy, Comment do |comment|
-        comment.user_id == user.id
-      end
-
-      if user.type == "Employee"
-        can :create, Client 
+        can :create, Comment
+        can :create, Image
+        can :create, Annotation
       end
     else
-      can :manage, :all
+      can :read, :all
     end
   end
 end

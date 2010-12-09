@@ -1,37 +1,40 @@
 <div class="grid_3">
-  <h4 class="title ui-state-default ui-corner-all">
+  <h3 class="title ui-state-default ui-corner-all">
     <%= @project.name %>
-  </h4>
-  <p>
-    <%= @project.description %>
-  </p>
+  </h3>
+  <div class="info">
     <p>
-    <%= link_to "Edit project", edit_project_path(@project) %>
-  </p>
+      <%= @project.description %>
+    </p>
+    <p>
+      <%= link_to "Edit project", edit_project_path(@project) %>
+    </p>
+  </div>
 </div>
 <div class="grid_3">
-  <h4 class="title ui-state-default ui-corner-all">Members</h4>
-  <h6 style="float:left;">Employees</h6>
-  <% @project.users.where(:type => "Employee").each do |employee| %>
-    <div class="grid_3 alpha omega" style="margin-bottom:20px;">
-      <%= image_tag employee.gravatar_url, :width => 40, :class => "gravatar" %><%= link_to employee.name, employee %>
-    </div>
-    <div class="clear"></div>
-  <% end %>
+  <h3 class="title ui-state-default ui-corner-all">Members</h3>
+  <div class="info">
+    <h6 style="float:left;">Employee</h6>
+    <% @project.users.where(:type => "Employee").each do |employee| %>
+      <div class="grid_3 alpha omega" style="margin-bottom:20px;">
+        <%= image_tag employee.gravatar_url, :width => 40, :class => "gravatar" %><%= link_to employee.name, employee %>
+      </div>
+      <div class="clear"></div>
+    <% end %>
 
-  <h6 style="float:left;">Clients</h6>
-  <% @project.users.where(:type => "Client").each do |client| %>
-    <div class="grid_3 alpha omega" style="margin-bottom:20px;">
-      <%= image_tag client.gravatar_url, :width => 40, :class => "gravatar" %><%= link_to client.name, client %>
-    </div>
-    <div class="clear"></div>
-  <% end %>
+    <h6 style="float:left;">Client</h6>
+    <% @project.users.where(:type => "Client").each do |client| %>
+      <div class="grid_3 alpha omega" style="margin-bottom:20px;">
+        <%= image_tag client.gravatar_url, :width => 40, :class => "gravatar" %><%= link_to client.name, client %>
+      </div>
+      <div class="clear"></div>
+    <% end %>
+  </div>
 </div>
 
 <div class="grid_6">
-  <h4 class="title ui-state-default ui-corner-all">Milestones</h4> 
+  <h3 class="title ui-state-default ui-corner-all">Milestones</h3> 
   <div class="info">
     <%= render @milestones %>
-    <%= link_to "New Milestone", new_project_milestone_path(@project) %>
   </div>
 </div>

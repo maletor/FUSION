@@ -1,12 +1,12 @@
 <div class="grid_3">
   <h3 class="title ui-state-default ui-corner-all">Projects</h3>
   <div class="info">
-    <%= link_to new_project_path do %>New Project<span style="float:right;margin-bottom:20px;" title="Add" class="ui-icon ui-icon-plusthick ui-state-default ui-corner-all"></span><% end %>
+    <h6 style="float:left;">New project</h6><%= link_to new_project_path do %><span style="float:right;margin-bottom:20px;" title="Add" class="ui-icon ui-icon-plusthick ui-state-default ui-corner-all"></span><% end %>
     <div class="clear"></div>
     <% @projects.each do |p| %>
       <p>
-        <%= link_to p.name, p %> <span style="color:#666;"><%= pluralize(p.users.count, "user") %></span>
-        <%= link_to p, :method => :delete, :confim => "Are you sure?" do %><span style="float:right" title="Add" class="ui-icon ui-icon-close ui-state-default ui-corner-all"></span><% end %><%= link_to edit_project_path(p) do %><span style="float:right" title="Edit" class="ui-icon ui-icon-pencil ui-state-default ui-corner-all"></span><% end %>
+        <%= link_to p.name, p %><br/><span style="color:#666;"> <%= pluralize(p.users.count, "user") %></span> / <span style="color:#666;"><%= pluralize(p.milestones.count, "milestone") %></span>
+        <%= link_to p, :method => :delete, :confim => "Are you sure?" do %><span style="float:right" title="Delete Project" class="ui-icon ui-icon-close ui-state-default ui-corner-all"></span><% end %><%= link_to new_project_milestone_path(p) do %><span style="float:right" title="Add Milestone" class="ui-icon ui-icon-plusthick ui-state-default ui-corner-all"></span><% end %><%= link_to edit_project_path(p) do %><span style="float:right;" title="Add Milestone" class="ui-icon ui-icon-pencil ui-state-default ui-corner-all"></span><% end %>
       </p>
     <% end %>
   </div>
@@ -14,9 +14,9 @@
 <div class="grid_3">
   <h3 class="title ui-state-default ui-corner-all">Users</h3>
   <div class="info"> 
-    <h6 style="float:left;">Employees</h6><%= link_to new_employee_path do %><span style="float:right" title="Add" class="ui-icon ui-icon-plusthick ui-state-default ui-corner-all"></span><% end %>
+    <h6 style="float:left;">New employee</h6><%= link_to new_employee_path do %><span style="float:right" title="Add" class="ui-icon ui-icon-plusthick ui-state-default ui-corner-all"></span><% end %>
     <%= render Employee.all %>
-    <h6 style="float:left;">Clients</h6><%= link_to new_client_path do %><span style="float:right" title="Delete" class="ui-icon ui-icon-plusthick ui-state-default ui-corner-all"></span><% end %>
+    <h6 style="float:left;">New client</h6><%= link_to new_client_path do %><span style="float:right" title="Delete" class="ui-icon ui-icon-plusthick ui-state-default ui-corner-all"></span><% end %>
     <%= render Client.all %>
   </div>
 </div>
@@ -24,9 +24,9 @@
 <div class="grid_6">
   <h3 class="title ui-state-default ui-corner-all">News Feed</h3>
   <div class="info">
-    <% current_user.comments.order("created_at desc").each do |c| %>
+    <% @comments.each do |c| %>
       <p>
-        <%= render c %>
+        <%= render c if c.recipients.include?(current_user) %>
       </p>
     <% end %>
   </div>

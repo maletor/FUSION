@@ -1,3 +1,4 @@
-$("#annotation_list").append("<%= escape_javascript(render @annotation) %>");
+$("#annotation_list").prepend("<%= escape_javascript(render @annotation) %>")
+$("#annotation_<%= @annotation.id %>").effect("highlight");
 $('#img_note').imgAreaSelect({ hide: true, disable:true }); 
 $('#noteform').remove();

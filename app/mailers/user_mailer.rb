@@ -16,4 +16,5 @@ class UserMailer < ActionMailer::Base
     @user = user
     mail(:to => user.email, :subject => "PRODfusion // Forgot Your Password?")
   end
+
 end

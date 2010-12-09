@@ -1,7 +1,8 @@
 <div class="grid_12">
-  <h1>Editing milestone</h1>
-  <p>
-    <%= link_to 'Delete Milestone', @milestone, :method => :delete %>
-  </p>
+  <h3 class="title ui-state-default ui-corner-all ">Edit milestone</h3>
   <%= render 'form' %>
+  <p>
+    <%= link_to "Back", @milestone.project %> | 
+    <%= link_to 'Delete Milestone', @milestone, :confirm => "Are you sure?", :method => :delete %>
+  </p>
 </div>

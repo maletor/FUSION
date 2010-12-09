@@ -7,6 +7,14 @@ $(document).ready(function() {
 
   $('h3.ui-state-default').addClass("ui-state-hover");
 
+  $('.graphic, .ui-icon').hover( 
+    function () {
+      $(this).addClass("ui-state-hover");    
+    },
+    function () {
+      $(this).removeClass("ui-state-hover");
+    });
+
   $('h3.ui-state-default').hover( 
     function () {
       $(this).removeClass("ui-state-hover");    
@@ -15,7 +23,7 @@ $(document).ready(function() {
       $(this).addClass("ui-state-hover");
     });
 
-  $('input[type=submit]').button();
+  $('input[type=submit], input[type=file]').button();
 
 });
 

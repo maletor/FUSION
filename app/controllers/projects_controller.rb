@@ -15,15 +15,9 @@ class ProjectsController < ApplicationController
     @images = @project.images
     @comments = @project.comments
     @milestone = @project.milestones.build
-    @milestones = @project.milestones
+    @milestones = @project.milestones.order("deadline desc")
 
-    if params[:sort] = "priority"
-      @tasks = @project.tasks.order("priority desc") 
-    elsif params[:sort] = "name"
-      @tasks = @project.tasks.order("name asc") 
-    else
       @tasks = @project.tasks.order("due desc") 
-    end
 
     respond_to do |format|
       format.html # show.html.erb

@@ -7,7 +7,7 @@ class ImagesController < ApplicationController
 
   def show
     @image = Image.find(params[:id])
-    @annotations = @image.annotations
+    @annotations = @image.annotations.order("created_at desc")
     @images = Project.find(params[:project_id]).images
   end
 

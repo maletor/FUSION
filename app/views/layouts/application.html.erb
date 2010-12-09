@@ -21,10 +21,9 @@
         <div class="grid_6 omega">
           <% if logged_in? %>
             <div id="navigation" style="float:left;">
-              <%= button_to "Dashboard", root_path %>
+              <%= button_to "Dashboard", dashboard_path, :method => :get %><%= yield :nav %><%= button_to "Logout", logout_path %>
             </div>
           <% end %>
-          <%= link_to root_path do %><%= image_tag "cmonk.png", :height => 52, :style => "float:right" %><% end %>
         </div>
       </div>
 
@@ -36,6 +35,8 @@
 
       <div id="footer" class="grid_12">
         129 Kingston Street, Second Floor  /  Boston, MA 02111 USA  / /  <%= mail_to "info@prod4ever.com", "info@prod4ever.com", :encode => :javascript %>  / /  (617) 426-0499
+        <%= link_to root_path do %><%= image_tag "cmonk.png", :height => 52, :style => "float:right" %><% end %>
+        
       </div>
     </div>
   </body>

@@ -28,6 +28,7 @@ class AnnotationsController < ApplicationController
   def create
     @image = Image.find(params[:image_id])
     @annotation = @image.annotations.build(params[:annotation])
+    @image.approved_at = Time.zone.now
 
     flash[:notice] = 'Annotation created.' if @annotation.save
   end

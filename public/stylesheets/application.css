@@ -339,3 +339,18 @@ input[type=submit] {
   float: left;
   margin-right: 10px;
 }
+
+#users {
+  -webkit-column-width: 150px;
+  -webkit-column-gap: 20px;
+  height: 150px;
+  margin-bottom: 20px;
+}  
+
+.milestone {
+  padding: 10px;
+}
+
+.tasks ul {
+  margin-bottom: 0;
+}

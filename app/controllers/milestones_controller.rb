@@ -53,7 +53,7 @@ class MilestonesController < ApplicationController
 
     respond_to do |format|
       if @milestone.update_attributes(params[:milestone])
-        format.html { redirect_to(@milestone, :notice => 'Milestone was successfully updated.') }
+        format.html { redirect_to(@milestone.project, :notice => 'Milestone was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

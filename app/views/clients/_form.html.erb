@@ -1,34 +1,23 @@
 <%= form_for @client do |f| %>
-   <% if @client.errors.any? %>
+  <% if @client.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@client.errors.count, "error") %> prohibited this task from being saved:</h2>
 
       <ul>
-      <% @client.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @client.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :name, "Full Name" %><br />
     <%= f.text_field :name %>
   </div>
-  <%= f.fields_for @card do |card_form| %>
-    <%= card_form.fields_for @website do |website_form| %>
-      <div class="field">
-        <%= website_form.label :url, "Website" %><br />
-        <%= website_form.text_field :url %>
-      </div>
-    <% end %>
-    <%= card_form.fields_for @phone_number do |phone_form| %>
-      <div class="field">
-        <%= phone_form.label :number %><br />
-        <%= phone_form.phone_field :number %>
-      </div>
-    <% end %>
-
-  <% end %>
+  <div class="field">
+    <%= f.label :website %><br />
+    <%= f.text_field :website %>
+  </div>
   <div class="field">
     <%= f.label :username %><br />
     <%= f.text_field :username %>
@@ -48,4 +37,4 @@
   <p><%= f.submit "Sign up" %></p>
 <% end %>
 
-  
+

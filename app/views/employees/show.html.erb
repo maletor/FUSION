@@ -1,5 +1,13 @@
-<p id="notice"><%= notice %></p>
+<div class="grid_12">
+  <h3 class="title ui-state-default ui-corner-all"><%= @employee.name %></h3>
 
+  <b>Projects</b>
+  <p>
+    <% @employee.projects.each do |e| %>
+      <%= link_to e.name, e %><br />
+    <% end %> 
+  </p>
 
-<%= link_to 'Edit', edit_employee_path(@employee) %> |
-<%= link_to 'Back', employees_path %>
+  <%= link_to 'Edit', edit_employee_path(@employee) %>
+</div>
+

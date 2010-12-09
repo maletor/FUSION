@@ -1,7 +1,6 @@
 <%= div_for (annotation) do %>
-  <p>
-    <%= annotation.user.name %>: <%= link_to_if annotation.x1, annotation_text(annotation), image_annotation_path(annotation.image.id, annotation.id), :remote => true %> <%= time_ago_in_words annotation.updated_at %> ago<br />
-    <%= link_to "edit", edit_image_annotation_path(annotation.image.id, annotation.id), :remote => true %><br />
-    <%= link_to "delete", image_annotation_path(annotation.image.id, annotation.id), :method => :delete, :remote => true, :confirm => "Are you sure?" %>
+  <p style="padding: 10px;border: 1px dashed #666;>
+    <%= link_to annotation.user.name %><span style="color:#666"> - <%= time_ago_in_words annotation.updated_at %> ago</span><br/><%= link_to annotation_text(annotation), image_annotation_path(annotation.image, annotation), :remote => true %><br />
   </p>
 <% end %>
+

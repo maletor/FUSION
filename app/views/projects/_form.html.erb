@@ -22,16 +22,13 @@
     <%= f.text_area :description %>
   </div>
 
-
-
-  <div class="users">
-    <%= f.label :user_ids, "Users" %><br />
-    <% User.all.each do |user| %>
-      <div>
-        <%= check_box_tag "project[user_ids][]", user.id, @project.users.include?(user) %>
-        <%= user.name %>
-      </div>
-    <% end %>
+<div id="users">
+  <% User.all.each do |user| %>
+    <div>
+      <%= check_box_tag "project[user_ids][]", user.id, @project.users.include?(user) %>
+      <%= user.name %>
+    </div>
+  <% end %>
   </div>
   <div class="actions">
     <%= f.submit %>

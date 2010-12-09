@@ -13,7 +13,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %>
+    <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
 
@@ -24,7 +24,7 @@
 
   <div class="field">
     <%= f.label :priority %><br />
-    <%= f.select :priority, [["High", 1], ["Medium", 2], ["Low", 3]] %>
+    <%= f.select :priority, [["High", 1], ["Medium", 2], ["Low", 3]], :include_blank => "None" %>
   </div>
 
   <p><%= link_to_add_fields "Add Task", f, :tasks %></p>
@@ -35,7 +35,7 @@
     <% end %>
   </div>
 
-  <div class="actions">
+  <div style="margin-top:20px;" class="actions">
     <%= f.submit %>
   </div>
 

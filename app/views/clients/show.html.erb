@@ -1,11 +1,5 @@
 <div class="grid_12">
-  <p id="notice"><%= notice %></p>
-
-  <p>
-    <b>Name:</b>
-    <%= @client.name %>
-  </p>
-
+  <h3 class="title ui-state-default ui-corner-all"><%= @client.name %></h3>
   <p>
     <b>Website:</b>
     <%= @client.website %>
@@ -14,10 +8,9 @@
   <b>Projects</b>
   <p>
     <% @client.projects.each do |p| %>
-      <%= p.name %><br />
+      <%= link_to p.name, p %><br />
     <% end %> 
   </p>
 
-  <%= link_to 'Edit', edit_client_path(@client) %> |
-  <%= link_to 'Back', clients_path %>
+  <%= link_to 'Edit', edit_client_path(@client) %>
 </div>
